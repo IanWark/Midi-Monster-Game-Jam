@@ -107,13 +107,10 @@ public class Monster : MonoBehaviour
         float newSoundPriority = detectedSound.GetPriority(transform.position);
         if (newSoundPriority > hearSoundThreshold)
         {
-            if (currentState == eMonsterState.Wander || currentState == eMonsterState.Investigate || newSoundPriority >= lastDetectedSound.GetPriority(transform.position))
-            {
-                lastDetectedSound = detectedSound;
+            lastDetectedSound = detectedSound;
 
-                currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound; 
-                monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
-            }
+            currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound;
+            monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
         }        
     }
 
