@@ -268,8 +268,8 @@ MonoBehaviour:
   predictedPositionSeconds: 0
   interactRange: 4
   cameraHeightRatio: 0.9
-  capsuleHeightStanding: 1.8
-  capsuleHeightCrouching: 0.9
+  capsuleHeightStanding: 1.2
+  capsuleHeightCrouching: 0.6
   crouchingSharpness: 10
   footstepSFXFrequency: 0.25
   footstepSFXFrequencyWhileSprinting: 0.25
@@ -300,8 +300,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.2
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
