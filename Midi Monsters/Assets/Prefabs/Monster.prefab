@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd6fd5cfd5fe6f42b41325fe7cc7470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 1
-  runningSpeed: 3
+  walkingSpeed: 2
+  runningSpeed: 4
   sprintingSpeed: 6
   debugCurrentDestination: {fileID: 0}
 --- !u!114 &500797898013786974

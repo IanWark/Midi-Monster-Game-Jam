@@ -262,7 +262,7 @@ MonoBehaviour:
   monster: {fileID: 0}
   interactText: {fileID: 2254227859758985031}
   gravityDownForce: 60
-  maxSpeed: 5
+  maxSpeed: 3
   movementSharpness: 15
   maxSpeedCrouchedRatio: 0.5
   sprintSpeedModifier: 2
