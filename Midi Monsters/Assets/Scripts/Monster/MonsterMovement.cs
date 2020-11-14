@@ -22,14 +22,10 @@ public class MonsterMovement : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
 
-    public Transform waypoint;
-
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-
-        MoveToPosition(waypoint.position, WalkingSpeed);
     }
 
     public void MoveToPosition(Vector3 position, float speed)
@@ -38,5 +34,10 @@ public class MonsterMovement : MonoBehaviour
         navMeshAgent.destination = position;
 
         debugCurrentDestination.position = position;
+    }
+
+    public bool IsAtDestination()
+    {
+        return !navMeshAgent.pathPending && navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance;
     }
 }

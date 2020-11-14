@@ -58,7 +58,6 @@ public class PlayerCharacterController : MonoBehaviour
     PlayerInputHandler m_InputHandler;
     CharacterController m_Controller;
     Vector3 m_CharacterVelocity;
-    Vector3 m_LatestImpactSpeed;
     float m_CameraVerticalAngle = 0f;
     float m_footstepDistanceCounter;
     float m_TargetCharacterHeight;
@@ -170,12 +169,8 @@ public class PlayerCharacterController : MonoBehaviour
         m_Controller.Move(characterVelocity * Time.deltaTime);
 
         // detect obstructions to adjust velocity accordingly
-        m_LatestImpactSpeed = Vector3.zero;
         if (Physics.CapsuleCast(capsuleBottomBeforeMove, capsuleTopBeforeMove, m_Controller.radius, characterVelocity.normalized, out RaycastHit hit, characterVelocity.magnitude * Time.deltaTime, -1, QueryTriggerInteraction.Ignore))
         {
-            // We remember the last impact speed because the fall damage logic might need it
-            m_LatestImpactSpeed = characterVelocity;
-
             characterVelocity = Vector3.ProjectOnPlane(characterVelocity, hit.normal);
         }
     }

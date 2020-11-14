@@ -14,14 +14,30 @@ public class Monster : MonoBehaviour
         public Vector3 predictedPosition;
     }
 
+    [SerializeField]
+    private Transform startWaypoint;
+
     private DetectedSound currentSound = null;
 
     MonsterMovement monsterMovement;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         monsterMovement = GetComponent<MonsterMovement>();
+
+        monsterMovement.MoveToPosition(startWaypoint.position, monsterMovement.WalkingSpeed);
+    }
+
+    private void Update()
+    {
+        if (currentSound != null && monsterMovement.IsAtDestination())
+        {
+            currentSound = null;
+
+            // TODO for now, we move back to start waypoint
+            monsterMovement.MoveToPosition(startWaypoint.position, monsterMovement.WalkingSpeed);
+        }
     }
 
     public void DetectSound(DetectedSound detectedSound)
