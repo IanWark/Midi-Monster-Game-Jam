@@ -13,8 +13,8 @@ public class MonsterMovement : MonoBehaviour
     public float RunningSpeed { get { return runningSpeed; } }
 
     [SerializeField]
-    private float chasingSpeed = 6f;
-    public float ChasingSpeed { get { return chasingSpeed; } }
+    private float sprintingSpeed = 6f;
+    public float SprintingSpeed { get { return sprintingSpeed; } }
 
     [Header("References")]
     [SerializeField]

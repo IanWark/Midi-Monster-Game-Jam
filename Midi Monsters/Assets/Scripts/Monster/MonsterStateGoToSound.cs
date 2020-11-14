@@ -16,7 +16,12 @@ public class MonsterStateGoToSound : MonoBehaviour
 
     public void EnterState(Monster.DetectedSound detectedSound, Monster.eMonsterState monsterState)
     {
-        // I think we do the distance check in here.
+        float movementSpeed = monsterMovement.RunningSpeed;
+        if (monsterState == Monster.eMonsterState.SprintToSound)
+        {
+            movementSpeed = monsterMovement.SprintingSpeed;
+        }
+        
         monsterMovement.MoveToPosition(detectedSound.predictedPosition, monsterMovement.RunningSpeed);
     }
 
