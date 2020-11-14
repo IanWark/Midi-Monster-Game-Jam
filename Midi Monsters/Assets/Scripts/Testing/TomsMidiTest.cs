@@ -23,5 +23,15 @@ public class TomsMidiTest : MonoBehaviour
         {
             bloop.Play();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            bgm.SetBPM(100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            bgm.SetBPM(300);
+        }
     }
 }

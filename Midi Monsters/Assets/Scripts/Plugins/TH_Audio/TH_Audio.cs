@@ -53,6 +53,12 @@ public class TH_Audio : MonoBehaviour
     [DllImport("TH_Audio.dll")]
     private static extern void SetChannelVoice(int channel, VoiceParameters parameters);
 
+    [DllImport("TH_Audio.dll")]
+    private static extern void SetChannelVolume(int channel, float volume);
+
+    [DllImport("TH_Audio.dll")]
+    private static extern void SetMIDITempo(int id, double bpm);
+
     [SerializeField]
     private TH_Audio_VoiceData voiceData;
 
@@ -83,6 +89,11 @@ public class TH_Audio : MonoBehaviour
         public void Play(bool looping = false)
         {
             PlayMidi(handle, looping);
+        }
+
+        public void SetBPM(double bpm)
+        {
+            SetMIDITempo(handle, bpm);
         }
     }
 

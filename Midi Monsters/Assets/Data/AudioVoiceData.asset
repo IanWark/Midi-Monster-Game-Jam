@@ -45,7 +45,7 @@ MonoBehaviour:
       Sustain: 0
       Release: 0.2
     Function: 1
-    Volume: 0.1
+    Volume: 0.05
   - Osc1Params:
       Shape: 2
     Osc2Params:
@@ -56,7 +56,7 @@ MonoBehaviour:
       Sustain: 0
       Release: 0.2
     Function: 1
-    Volume: 0.1
+    Volume: 0
   - Osc1Params:
       Shape: 2
     Osc2Params:
@@ -67,7 +67,7 @@ MonoBehaviour:
       Sustain: 0
       Release: 0.2
     Function: 1
-    Volume: 0.1
+    Volume: 0
   - Osc1Params:
       Shape: 2
     Osc2Params:
