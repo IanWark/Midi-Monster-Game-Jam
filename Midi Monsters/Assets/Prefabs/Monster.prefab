@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3eaab38ee70a14d89d2a2755a95e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: {fileID: 0}
+  hearSoundThreshold: 0.01
+  sprintThreshold: 0.1
 --- !u!114 &500797898013786961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 2
   runningSpeed: 8
-  chasingSpeed: 16
+  sprintingSpeed: 6
   debugCurrentDestination: {fileID: 0}
 --- !u!114 &500797898013786974
 MonoBehaviour:
@@ -201,6 +202,8 @@ MonoBehaviour:
   investigateValue: 0.25
   runValue: 0.75
   sprintValue: 1
+  player: {fileID: 0}
+  audioInterface: {fileID: 0}
 --- !u!114 &4822028080526680836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderPointFromPlayerRadius: 40
+  minWaitAtPoint: 0
+  maxWaitAtPoint: 2
 --- !u!114 &7511818031752311996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb6cb8b52cf50b4ab67df2caa417ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minWaitAtPoint: 0
+  maxWaitAtPoint: 1
   investigateRadius: 10
   investigatePoints: 3
 --- !u!114 &3400370254043979420
