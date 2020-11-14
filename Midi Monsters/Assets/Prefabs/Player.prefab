@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 6334232903267770650}
   audioSource: {fileID: 6334232902239811227}
+  monster: {fileID: 0}
   maxSpeed: 10
   movementSharpness: 15
   maxSpeedCrouchedRatio: 0.5
@@ -59,7 +60,7 @@ MonoBehaviour:
   crouchingSharpness: 10
   footstepSFXFrequency: 1
   footstepSFXFrequencyWhileSprinting: 1
-  footstepSFX: {fileID: 0}
+  footstepSFX: {fileID: 8300000, guid: 2602a24f4917c044caba338032d215e2, type: 3}
 --- !u!114 &6334232902239811226
 MonoBehaviour:
   m_ObjectHideFlags: 0

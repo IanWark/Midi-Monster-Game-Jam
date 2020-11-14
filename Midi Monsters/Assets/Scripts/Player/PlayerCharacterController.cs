@@ -129,10 +129,7 @@ public class PlayerCharacterController : MonoBehaviour
             if (m_footstepDistanceCounter >= 1f / chosenFootstepSFXFrequency)
             {
                 m_footstepDistanceCounter = 0f;
-                audioSource.PlayOneShot(footstepSFX);
-
-                // send sound event to monster
-                monster.DetectSound(new Monster.DetectedSound(transform.position));
+                PlayFootstep();
             }
 
             // keep track of distance traveled for footsteps sound
@@ -153,6 +150,14 @@ public class PlayerCharacterController : MonoBehaviour
 
             characterVelocity = Vector3.ProjectOnPlane(characterVelocity, hit.normal);
         }
+    }
+
+    void PlayFootstep()
+    {
+        audioSource.PlayOneShot(footstepSFX);
+
+        // send sound event to monster
+        monster.DetectSound(new Monster.DetectedSound(transform.position));
     }
 
     // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller
