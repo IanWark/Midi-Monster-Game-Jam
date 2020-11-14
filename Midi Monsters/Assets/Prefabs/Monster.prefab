@@ -109,6 +109,9 @@ GameObject:
   - component: {fileID: 500797898154207257}
   - component: {fileID: 500797898013786961}
   - component: {fileID: 500797898013786974}
+  - component: {fileID: 4822028080526680836}
+  - component: {fileID: 7511818031752311996}
+  - component: {fileID: 3400370254043979420}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -198,3 +201,42 @@ MonoBehaviour:
   investigateValue: 0.25
   runValue: 0.75
   sprintValue: 1
+--- !u!114 &4822028080526680836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500797898013786962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8772fbbc8f8354ebc6e05e380cdcc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderPointFromPlayerRadius: 40
+--- !u!114 &7511818031752311996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500797898013786962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb6cb8b52cf50b4ab67df2caa417ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  investigateRadius: 10
+  investigatePoints: 3
+--- !u!114 &3400370254043979420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500797898013786962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac724a52ae88264aba441d50449d3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Monster : MonoBehaviour
     private DetectedSound lastDetectedSound = null;
 
     MonsterStateGoToSound monsterStateGoToSound;
-    MonsterStateInvestigatePoint monsterStateInvestigatePoint;
+    MonsterStateInvestigate monsterStateInvestigatePoint;
     MonsterStateWander monsterStateWander;
 
     MonsterMovement monsterMovement;
@@ -40,13 +41,13 @@ public class Monster : MonoBehaviour
     {
         monsterMovement = GetComponent<MonsterMovement>();
 
-        monsterStateGoToSound = new MonsterStateGoToSound(this, monsterMovement);
+        monsterStateGoToSound = GetComponent<MonsterStateGoToSound>(); 
         monsterStateGoToSound.OnExitState += ExitStateGoToSound;
 
-        monsterStateInvestigatePoint = new MonsterStateInvestigatePoint(this, monsterMovement);
+        monsterStateInvestigatePoint = GetComponent<MonsterStateInvestigate>();
         monsterStateInvestigatePoint.OnExitState += ExitStateInvestigatePoint;
 
-        monsterStateWander = new MonsterStateWander(this, monsterMovement, startWaypoint);
+        monsterStateWander = GetComponent<MonsterStateWander>();
 
         monsterStateWander.EnterState();
         currentState = eMonsterState.Wander;
@@ -56,15 +57,15 @@ public class Monster : MonoBehaviour
     {
         if (currentState == eMonsterState.GoToSound || currentState == eMonsterState.SprintToSound)
         {
-            monsterStateGoToSound.Update();
+            monsterStateGoToSound.Tick();
         }
         else if (currentState == eMonsterState.Investigate)
         {
-            monsterStateInvestigatePoint.Update();
+            monsterStateInvestigatePoint.Tick();
         }
         else if (currentState == eMonsterState.Wander)
         {
-            monsterStateWander.Update();
+            monsterStateWander.Tick();
         }
     }
 
@@ -88,5 +89,17 @@ public class Monster : MonoBehaviour
 
         currentState = eMonsterState.GoToSound; // Sprint at some point
         monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
+    }
+
+    // Returns a random valid point on the navmesh within radius of position
+    // https://answers.unity.com/questions/475066/how-to-get-a-random-point-on-navmesh.html
+    static public Vector3 GetRandomNavmeshPoint(Vector3 position, float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, radius, 1);
+
+        return hit.position;
     }
 }

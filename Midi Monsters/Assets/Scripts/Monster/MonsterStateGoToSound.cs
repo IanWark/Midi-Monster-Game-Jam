@@ -1,16 +1,17 @@
 ﻿using System;
+using UnityEngine;
 
-public class MonsterStateGoToSound
+public class MonsterStateGoToSound : MonoBehaviour
 {
     public event Action OnExitState;
     
     Monster monster;
     MonsterMovement monsterMovement;
 
-    public MonsterStateGoToSound(Monster monster, MonsterMovement monsterMovement)
+    public void Start()
     {
-        this.monster = monster;
-        this.monsterMovement = monsterMovement;
+        monster = GetComponent<Monster>();
+        monsterMovement = GetComponent<MonsterMovement>();
     }
 
     public void EnterState(Monster.DetectedSound detectedSound, Monster.eMonsterState monsterState)
@@ -19,7 +20,7 @@ public class MonsterStateGoToSound
         monsterMovement.MoveToPosition(detectedSound.predictedPosition, monsterMovement.RunningSpeed);
     }
 
-    public void Update()
+    public void Tick()
     {
         if (monsterMovement.IsAtDestination())
         {
