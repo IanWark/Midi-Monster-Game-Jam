@@ -102,4 +102,11 @@ public class Monster : MonoBehaviour
 
         return hit.position;
     }
+
+    static public float InverseDistanceValue(Vector3 position1, Vector3 position2)
+    {
+        Vector3 distance = position1 - position2;
+
+        return (1f / distance.magnitude);
+    }
 }
