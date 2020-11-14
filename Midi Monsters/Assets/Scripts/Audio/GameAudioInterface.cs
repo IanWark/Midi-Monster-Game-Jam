@@ -6,6 +6,8 @@ public class GameAudioInterface : MonoBehaviour
 {
     private TH_Audio.MIDISound layeredMusic;
 
+    public static GameAudioInterface Instance; // Lol
+
     [SerializeField]
     private PlayerCharacterController player;
 
@@ -27,6 +29,13 @@ public class GameAudioInterface : MonoBehaviour
     }
 
     private Dictionary<MIDISfx, TH_Audio.MIDISound> soundLibrary = new Dictionary<MIDISfx, TH_Audio.MIDISound>();
+
+    private List<Emitter> runningEmitters = new List<Emitter>();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -57,6 +66,24 @@ public class GameAudioInterface : MonoBehaviour
 
     public void PlayMIDISfx(MIDISfx effect)
     {
-        Debug.Log("Playing SFX");
+        soundLibrary[effect].Play();
+    }
+
+    private void Update()
+    {
+        if (player)
+        {
+            foreach (Emitter emitter in runningEmitters)
+            {
+                float distance = Vector3.Distance(player.transform.position, emitter.transform.position);
+                distance =  Mathf.Clamp01((20.0f - distance)/20.0f); // Lol hack
+                emitter.soundMIDI.SetVolume(distance);
+            }
+        }
+    }
+
+    public static void RegisterEmitter(Emitter emitter)
+    {
+        Instance.runningEmitters.Add(emitter);
     }
 }

@@ -59,6 +59,9 @@ public class TH_Audio : MonoBehaviour
     [DllImport("TH_Audio.dll")]
     private static extern void SetMIDITempo(int id, double bpm);
 
+    [DllImport("TH_Audio.dll")]
+    private static extern void SetMIDIVolume(int id, float volume);
+
     [SerializeField]
     private TH_Audio_VoiceData voiceData;
 
@@ -94,6 +97,11 @@ public class TH_Audio : MonoBehaviour
         public void SetBPM(double bpm)
         {
             SetMIDITempo(handle, bpm);
+        }
+
+        public void SetVolume(float volume)
+        {
+            SetMIDIVolume(handle, volume);
         }
     }
 

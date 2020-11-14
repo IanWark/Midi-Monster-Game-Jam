@@ -60,14 +60,14 @@ MonoBehaviour:
   - Osc1Params:
       Shape: 2
     Osc2Params:
-      Shape: 1
+      Shape: 2
     ADSRParams:
-      Attack: 0.001
+      Attack: 0.01
       Decay: 0.5
-      Sustain: 0
+      Sustain: 1
       Release: 0.2
     Function: 1
-    Volume: 0
+    Volume: 0.1
   - Osc1Params:
       Shape: 2
     Osc2Params:
@@ -78,7 +78,7 @@ MonoBehaviour:
       Sustain: 0
       Release: 0.2
     Function: 1
-    Volume: 0.1
+    Volume: 0
   - Osc1Params:
       Shape: 2
     Osc2Params:
