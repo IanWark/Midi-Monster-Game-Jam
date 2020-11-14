@@ -14,10 +14,22 @@ public class Monster : MonoBehaviour
         public Vector3 predictedPosition;
     }
 
+    public enum eMonsterState
+    {
+        GoToSound = 1,
+        Investigate = 2,
+        Wander = 3,
+    }
+
     [SerializeField]
     private Transform startWaypoint;
+    
+    private eMonsterState currentState = eMonsterState.Wander;
+    private DetectedSound lastDetectedSound = null;
 
-    private DetectedSound currentSound = null;
+    MonsterStateGoToSound monsterStateGoToSound;
+    MonsterStateInvestigatePoint monsterStateInvestigatePoint;
+    MonsterStateWander monsterStateWander;
 
     MonsterMovement monsterMovement;
 
@@ -26,35 +38,53 @@ public class Monster : MonoBehaviour
     {
         monsterMovement = GetComponent<MonsterMovement>();
 
-        monsterMovement.MoveToPosition(startWaypoint.position, monsterMovement.WalkingSpeed);
+        monsterStateGoToSound = new MonsterStateGoToSound(this, monsterMovement);
+        monsterStateGoToSound.OnExitState += ExitStateGoToSound;
+
+        monsterStateInvestigatePoint = new MonsterStateInvestigatePoint(this, monsterMovement);
+        monsterStateInvestigatePoint.OnExitState += ExitStateInvestigatePoint;
+
+        monsterStateWander = new MonsterStateWander(this, monsterMovement, startWaypoint);
+
+        monsterStateWander.EnterState();
+        currentState = eMonsterState.Wander;
     }
 
     private void Update()
     {
-        if (currentSound != null && monsterMovement.IsAtDestination())
+        if (currentState == eMonsterState.GoToSound)
         {
-            currentSound = null;
-
-            // TODO for now, we move back to start waypoint
-            monsterMovement.MoveToPosition(startWaypoint.position, monsterMovement.WalkingSpeed);
+            monsterStateGoToSound.Update();
         }
+        else if (currentState == eMonsterState.Investigate)
+        {
+            monsterStateInvestigatePoint.Update();
+        }
+        else if (currentState == eMonsterState.Wander)
+        {
+            monsterStateWander.Update();
+        }
+    }
+
+    private void ExitStateGoToSound()
+    {
+        currentState = eMonsterState.Investigate;
+        monsterStateInvestigatePoint.EnterState(lastDetectedSound);
+    }
+
+    private void ExitStateInvestigatePoint()
+    {
+        currentState = eMonsterState.Wander;
+        monsterStateWander.EnterState();
     }
 
     public void DetectSound(DetectedSound detectedSound)
     {
         // Detectable things send an event to us
+        // TODO Check if we can hear it, and if its great priority than our lastDetectedSound
+        lastDetectedSound = detectedSound;
 
-        // I think we do the distance check in here.
-        currentSound = detectedSound;
-        monsterMovement.MoveToPosition(currentSound.predictedPosition, monsterMovement.RunningSpeed);
-
-        /*
-        if (currentSound == null)
-        {
-            
-        }
-        */
-
-        // else, we don't care about this sound.
+        currentState = eMonsterState.GoToSound;
+        monsterStateGoToSound.EnterState(lastDetectedSound);
     }
 }
