@@ -12,6 +12,12 @@ public class MonsterAudioManager : MonoBehaviour
     [SerializeField, Range(0, 1), Tooltip("Value to return when we are going max speed to a sound we heard.")]
     private float sprintValue = 1f;
 
+    [Header("References")]
+    [SerializeField]
+    private PlayerCharacterController player;
+    [SerializeField]
+    private GameAudioInterface audioInterface;
+
     private Monster monster;
 
     void Start()
@@ -19,7 +25,25 @@ public class MonsterAudioManager : MonoBehaviour
         monster = GetComponent<Monster>();
     }
 
-    public float GetMonsterState()
+    private void Update()
+    {
+        // Update the audioInterface with our info
+        //audioInterface.UpdateMonsterState();
+    }
+
+    public float GetPlayerFacingMonsterValue()
+    {
+        //Vector3 playerFacing = player.transform.forward;
+        return 0;
+    }
+
+    public float GetMonsterProximityToPlayerValue()
+    {
+        // TODO add designer modifiable modifiers
+        return Monster.InverseDistanceValue(player.transform.position, monster.transform.position);
+    }
+
+    public float GetMonsterChaseStateValue()
     {
         switch(monster.CurrentState)
         {
