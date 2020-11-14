@@ -18,6 +18,10 @@ public class MonsterAudioManager : MonoBehaviour
     [Header("Modifiers")]
     [SerializeField, Tooltip("The angle where the playerSeesMonster value is set to 0. 180 is completely away from the monster.")]
     private float playerSeesMonsterMaxAngle = 180;
+    [SerializeField, Tooltip("Where we mulitply playerSeesMonster value by the proximity to the monster")]
+    private bool playerSeesMonsterUseProximity = true;
+    [SerializeField, Tooltip("Just a straight multiplier on the playerSeesMonster value")]
+    private float playerSeesMonsterMultiplier = 2f;
 
     [Header("References")]
     [SerializeField]
@@ -62,7 +66,14 @@ public class MonsterAudioManager : MonoBehaviour
         dotProduct = angleValue + (dotProduct * (1f - angleValue));
 
         // no negatives allowed, clamp it
-        return Mathf.Clamp(dotProduct, 0, 1); 
+        dotProduct = Mathf.Clamp(dotProduct, 0, 1);
+
+        if (playerSeesMonsterUseProximity)
+        {
+            dotProduct *= GetMonsterProximityValue();
+        }
+
+        return dotProduct * playerSeesMonsterMultiplier; 
     }
 
     public float GetMonsterProximityValue()
