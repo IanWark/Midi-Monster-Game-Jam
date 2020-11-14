@@ -7,9 +7,9 @@ public class Monster : MonoBehaviour
     {
         public Vector3 position;
         public Vector3 predictedPosition;
-        public int volume;
+        public float volume;
 
-        public DetectedSound(Vector3 position, Vector3 predictedPosition, int volume)
+        public DetectedSound(Vector3 position, Vector3 predictedPosition, float volume)
         {
             this.position = position;
             this.predictedPosition = predictedPosition;

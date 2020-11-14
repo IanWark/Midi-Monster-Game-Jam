@@ -47,6 +47,12 @@ public class PlayerCharacterController : MonoBehaviour
     public float footstepSFXFrequency = 1f;
     [Tooltip("Amount of footstep sounds played when moving one meter while sprinting")]
     public float footstepSFXFrequencyWhileSprinting = 1f;
+    [Tooltip("Volume when talking a crouched step for the purposes of AI detection.")]
+    public float crouchFootstepDetectionVolume = 1f;
+    [Tooltip("Volume when talking a normal step for the purposes of AI detection.")]
+    public float normalFootstepDetectionVolume = 2f;
+    [Tooltip("Volume when talking a sprint step for the purposes of AI detection.")]
+    public float sprintFootstepDetectionVolume = 4f;
     [Tooltip("Sound played for footsteps")]
     public AudioClip footstepSFX;
 
@@ -152,11 +158,7 @@ public class PlayerCharacterController : MonoBehaviour
             {
                 m_footstepDistanceCounter = 0f;
 
-                // TODO For testing, only play footstep when sprinting
-                if (isSprinting)
-                {
-                    PlayFootstep();
-                }
+                PlayFootstep(isSprinting);
             }
 
             // keep track of distance traveled for footsteps sound
@@ -175,13 +177,23 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
-    void PlayFootstep()
+    void PlayFootstep(bool isSprinting)
     {
         audioSource.PlayOneShot(footstepSFX);
 
+        float detectionVolume = normalFootstepDetectionVolume;
+        if (isSprinting)
+        {
+            detectionVolume = sprintFootstepDetectionVolume;
+        }
+        else if (isCrouching)
+        {
+            detectionVolume = crouchFootstepDetectionVolume;
+        }
+
         // send sound event to monster
         Vector3 predictedPosition = transform.position + (characterVelocity * predictedPositionSeconds); // Where are we estimated to be predictedPositionSeconds later?
-        monster.DetectSound(new Monster.DetectedSound(transform.position, predictedPosition, 1));
+        monster.DetectSound(new Monster.DetectedSound(transform.position, predictedPosition, detectionVolume));
     }
 
     // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller
