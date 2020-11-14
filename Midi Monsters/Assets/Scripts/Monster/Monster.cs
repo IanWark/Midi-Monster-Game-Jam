@@ -87,4 +87,6 @@ public class Monster : MonoBehaviour
         currentState = eMonsterState.GoToSound;
         monsterStateGoToSound.EnterState(lastDetectedSound);
     }
+
+
 }
