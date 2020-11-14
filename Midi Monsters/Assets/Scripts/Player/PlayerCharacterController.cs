@@ -262,7 +262,7 @@ public class PlayerCharacterController : MonoBehaviour
                 interactText.text = subject.InteractionPrompt;
                 interactText.enabled = true;
 
-                if (Input.GetKeyDown(KeyCode.F))
+                if (m_InputHandler.GetInteractDown())
                 {
                     subject.Interact();
                 }

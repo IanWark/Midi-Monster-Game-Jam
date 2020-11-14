@@ -100,6 +100,16 @@ public class PlayerInputHandler : MonoBehaviour
         return false;
     }
 
+    public bool GetInteractDown()
+    {
+        if (CanProcessInput())
+        {
+            return Input.GetButtonDown("Interact");
+        }
+
+        return false;
+    }
+
     float GetMouseLookAxis(string mouseInputName, bool shouldInvert)
     {
         if (CanProcessInput())

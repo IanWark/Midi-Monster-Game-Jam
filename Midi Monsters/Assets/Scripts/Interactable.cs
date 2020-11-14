@@ -15,6 +15,6 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-
+        Debug.Log("I have been interacted with.");
     }
 }
