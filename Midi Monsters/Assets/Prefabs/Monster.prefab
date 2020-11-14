@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd6fd5cfd5fe6f42b41325fe7cc7470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 2
+  walkingSpeed: 0
   runningSpeed: 8
   sprintingSpeed: 6
   debugCurrentDestination: {fileID: 0}
@@ -202,7 +202,7 @@ MonoBehaviour:
   investigateValue: 0.25
   runValue: 0.75
   sprintValue: 1
-  playerSeesMonsterAngle: 135
+  playerSeesMonsterMaxAngle: 135
   player: {fileID: 0}
   audioInterface: {fileID: 0}
 --- !u!114 &4822028080526680836
