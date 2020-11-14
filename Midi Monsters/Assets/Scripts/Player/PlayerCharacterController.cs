@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInputHandler), typeof(AudioSource))]
 public class PlayerCharacterController : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerCharacterController : MonoBehaviour
     public AudioSource audioSource;
     [Tooltip("You can't run and you can't hide...")]
     public Monster monster;
+    [SerializeField]
+    private TextMeshProUGUI interactText = null;
 
     [Header("Movement")]
     [Tooltip("Max movement speed when not sprinting")]
@@ -22,6 +25,10 @@ public class PlayerCharacterController : MonoBehaviour
     public float maxSpeedCrouchedRatio = 0.5f;
     [Tooltip("Multiplicator for the sprint speed")]
     public float sprintSpeedModifier = 2f;
+
+    [Header("Interaction Settings")]
+    [Tooltip("How far away we can interact with an object.")]
+    public float interactRange = 4f;
 
     [Header("Stance")]
     [Tooltip("Ratio (0-1) of the character height where the camera will be at")]
@@ -65,6 +72,10 @@ public class PlayerCharacterController : MonoBehaviour
         // force the crouch state to false when starting
         SetCrouchingState(false, true);
         UpdateCharacterHeight(true);
+
+        // disable interaction prompt until we need it.
+        interactText.text = "press F to interact";
+        interactText.enabled = false;
     }
 
     void Update()
@@ -78,6 +89,8 @@ public class PlayerCharacterController : MonoBehaviour
         UpdateCharacterHeight(false);
 
         HandleCharacterMovement();
+
+        CheckInteraction();
     }
 
     void HandleCharacterMovement()
@@ -235,5 +248,25 @@ public class PlayerCharacterController : MonoBehaviour
 
         isCrouching = crouched;
         return true;
+    }
+
+    private void CheckInteraction()
+    {
+        interactText.enabled = false;
+
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactRange))
+        {
+            Interactable subject = hit.collider.gameObject.GetComponent<Interactable>();
+            if (subject != null && subject.IsInteractable())
+            {
+                interactText.text = subject.InteractionPrompt;
+                interactText.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    subject.Interact();
+                }
+            }
+        }
     }
 }

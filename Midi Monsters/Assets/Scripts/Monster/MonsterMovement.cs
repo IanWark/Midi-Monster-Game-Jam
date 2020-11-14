@@ -24,7 +24,7 @@ public class MonsterMovement : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        MoveToPosition(waypoint.position, walkingSpeed);
+        MoveToPosition(waypoint.position, WalkingSpeed);
     }
 
     public void MoveToPosition(Vector3 position, float speed)
