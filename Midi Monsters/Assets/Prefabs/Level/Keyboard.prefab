@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4737079397578654}
   - component: {fileID: 33651205097252412}
   - component: {fileID: 23667392519626626}
+  - component: {fileID: 1293742463903472809}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 72ddb03c5a7a78e48816ec68e9eac314, type: 2}
   - {fileID: 2100000, guid: 72ddb03c5a7a78e48816ec68e9eac314, type: 2}
   - {fileID: 2100000, guid: 72ddb03c5a7a78e48816ec68e9eac314, type: 2}
-  - {fileID: 2100000, guid: d6e2f877df22b2b46bba84f3325ee7ce, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 92a0cbddec70ac446b0ce52d0581c42b, type: 2}
   - {fileID: 2100000, guid: 6c43359a92f7955438480427dbbc19b3, type: 2}
   m_StaticBatchInfo:
@@ -89,3 +90,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1293742463903472809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987487013395816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0064000012, y: 0.0025, z: 0.0011}
+  m_Center: {x: -0.000059668906, y: 0.000104774816, z: 0.000019830619}
