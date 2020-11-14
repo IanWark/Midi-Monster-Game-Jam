@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4153094172322682}
   - component: {fileID: 33553138481942154}
   - component: {fileID: 23026692839739170}
+  - component: {fileID: 7706798699731352602}
   m_Layer: 0
   m_Name: Corner Couch Foot Rest
   m_TagString: Untagged
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7706798699731352602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180441661141122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00062400015, y: 0.00936, z: 0.005999999}
+  m_Center: {x: 2.910383e-11, y: 9.313224e-10, z: -0.0001424822}
 --- !u!1 &1707446341969270
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +107,7 @@ GameObject:
   - component: {fileID: 4480570267726896}
   - component: {fileID: 33689759700006190}
   - component: {fileID: 23410325874733746}
+  - component: {fileID: 3400813950771770567}
   m_Layer: 0
   m_Name: Corner Couch
   m_TagString: Untagged
@@ -164,6 +179,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3400813950771770567
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707446341969270}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: e91982332776d9741bf4d3a57d9386f6, type: 3}
 --- !u!1 &1777632052939918
 GameObject:
   m_ObjectHideFlags: 0

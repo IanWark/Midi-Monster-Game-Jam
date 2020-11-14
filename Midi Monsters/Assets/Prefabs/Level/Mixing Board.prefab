@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4087732543394638}
   - component: {fileID: 33693867640686192}
   - component: {fileID: 23271425590649604}
+  - component: {fileID: 3008364978974301877}
   m_Layer: 0
   m_Name: Mixing Board
   m_TagString: Untagged
@@ -91,6 +92,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3008364978974301877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164394665684440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010000005, y: 0.0040000007, z: 0.0020320527}
+  m_Center: {x: -2.3283064e-10, y: -3.492459e-10, z: 0.000016026544}
 --- !u!1 &1180070570282918
 GameObject:
   m_ObjectHideFlags: 0

@@ -1004,6 +1004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4105064904412668}
+  - component: {fileID: 6376907761142700250}
   m_Layer: 0
   m_Name: DrumKit
   m_TagString: Untagged
@@ -1033,3 +1034,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -150, z: 0}
+--- !u!65 &6376907761142700250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924347927819688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6765078, y: 1.4570522, z: 1.0533366}
+  m_Center: {x: 0.15496568, y: 0.50667286, z: 0.06077069}
