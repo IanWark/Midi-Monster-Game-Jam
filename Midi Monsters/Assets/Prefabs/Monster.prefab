@@ -168,8 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3eaab38ee70a14d89d2a2755a95e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hearSoundThreshold: 0.01
-  sprintThreshold: 0.1
+  debugPrint: 0
+  hearSoundThreshold: 0.1
+  sprintThreshold: 0.4
 --- !u!114 &500797898013786961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f4c4cf49a7c8741bda3e2682c537b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugPrint: 0
   wanderValue: 0
   investigateValue: 0.25
   runValue: 0.75
