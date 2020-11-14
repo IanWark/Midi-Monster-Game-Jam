@@ -15,6 +15,10 @@ public class PlayerCharacterController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI interactText = null;
 
+    [Header("General")]
+    [Tooltip("Force applied downward when in the air")]
+    public float gravityDownForce = 20f;
+
     [Header("Movement")]
     [Tooltip("Max movement speed when not sprinting")]
     public float maxSpeed = 10f;
@@ -60,7 +64,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     public Vector3 characterVelocity { get; set; }
     public bool isCrouching { get; private set; }
-    
+
     PlayerInputHandler m_InputHandler;
     CharacterController m_Controller;
     Vector3 m_CharacterVelocity;
@@ -162,7 +166,10 @@ public class PlayerCharacterController : MonoBehaviour
             }
 
             // keep track of distance traveled for footsteps sound
-            m_footstepDistanceCounter += characterVelocity.magnitude * Time.deltaTime;            
+            m_footstepDistanceCounter += characterVelocity.magnitude * Time.deltaTime;
+
+            // apply the gravity to the velocity
+            characterVelocity += Vector3.down * gravityDownForce * Time.deltaTime;
         }
 
         // apply the final calculated velocity value as a character movement

@@ -261,7 +261,8 @@ MonoBehaviour:
   audioSource: {fileID: 2254227859900582611}
   monster: {fileID: 0}
   interactText: {fileID: 2254227859758985031}
-  maxSpeed: 10
+  gravityDownForce: 60
+  maxSpeed: 5
   movementSharpness: 15
   maxSpeedCrouchedRatio: 0.5
   sprintSpeedModifier: 2
@@ -273,6 +274,9 @@ MonoBehaviour:
   crouchingSharpness: 10
   footstepSFXFrequency: 0.25
   footstepSFXFrequencyWhileSprinting: 0.25
+  crouchFootstepDetectionVolume: 1
+  normalFootstepDetectionVolume: 2
+  sprintFootstepDetectionVolume: 4
   footstepSFX: {fileID: 8300000, guid: 2602a24f4917c044caba338032d215e2, type: 3}
 --- !u!114 &2254227859900582610
 MonoBehaviour:

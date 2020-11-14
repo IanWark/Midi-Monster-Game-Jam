@@ -39,7 +39,7 @@ public class MonsterAudioManager : MonoBehaviour
             monsterAudioUpdate.MonsterSeesPlayer = GetMonsterSeesPlayerValue();
             monsterAudioUpdate.Proximity = GetMonsterProximityValue();
 
-            Debug.Log("MonsterAudioUpdate: PlayerSeesMonster: " + monsterAudioUpdate.PlayerSeesMonster + " MonsterSeesPlayer: " + monsterAudioUpdate.MonsterSeesPlayer + " Proximity: " + monsterAudioUpdate.Proximity);
+            // Debug.Log("MonsterAudioUpdate: PlayerSeesMonster: " + monsterAudioUpdate.PlayerSeesMonster + " MonsterSeesPlayer: " + monsterAudioUpdate.MonsterSeesPlayer + " Proximity: " + monsterAudioUpdate.Proximity);
 
             audioInterface.UpdateMonsterState(monsterAudioUpdate);
         } 
