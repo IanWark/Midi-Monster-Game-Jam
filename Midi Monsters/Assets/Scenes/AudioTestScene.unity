@@ -123,6 +123,61 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &349969928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4400659772958661722, guid: 52b209f1decd2434c910a3b27c1a6912, type: 3}
+  m_PrefabInstance: {fileID: 518826511789509789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5e2cc77eb8f2045bc82acca79872d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &962162688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 962162690}
+  - component: {fileID: 962162689}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &962162689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962162688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 0
+--- !u!4 &962162690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962162688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8330886, y: 1.1395042, z: -1.6198113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288222432
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a6357bf3409f45ab3dfeb7994c4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioInterface: {fileID: 349969928}
+  player: 0
+  monster: 0
+  prox: 0
 --- !u!1 &1499759368
 GameObject:
   m_ObjectHideFlags: 0
