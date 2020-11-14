@@ -14,7 +14,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChannelVoices:
   - Osc1Params:
+      Shape: 2
+    Osc2Params:
       Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.05
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
+    Osc2Params:
+      Shape: 1
+    ADSRParams:
+      Attack: 0.001
+      Decay: 0.5
+      Sustain: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
+  - Osc1Params:
+      Shape: 2
     Osc2Params:
       Shape: 1
     ADSRParams:
@@ -23,169 +122,70 @@ MonoBehaviour:
       Sustain: 0
       Release: 0
     Function: 9
-    Volume: 0.05
+    Volume: 0.1
   - Osc1Params:
-      Shape: 0
+      Shape: 2
     Osc2Params:
-      Shape: 0
+      Shape: 1
     ADSRParams:
-      Attack: 0
-      Decay: 0
+      Attack: 0.001
+      Decay: 0.5
       Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
   - Osc1Params:
-      Shape: 0
+      Shape: 2
     Osc2Params:
-      Shape: 0
+      Shape: 1
     ADSRParams:
-      Attack: 0
-      Decay: 0
+      Attack: 0.001
+      Decay: 0.5
       Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
   - Osc1Params:
-      Shape: 0
+      Shape: 2
     Osc2Params:
-      Shape: 0
+      Shape: 1
     ADSRParams:
-      Attack: 0
-      Decay: 0
+      Attack: 0.001
+      Decay: 0.5
       Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
   - Osc1Params:
-      Shape: 0
+      Shape: 2
     Osc2Params:
-      Shape: 0
+      Shape: 1
     ADSRParams:
-      Attack: 0
-      Decay: 0
+      Attack: 0.001
+      Decay: 0.5
       Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
   - Osc1Params:
-      Shape: 0
+      Shape: 2
     Osc2Params:
-      Shape: 0
+      Shape: 1
     ADSRParams:
-      Attack: 0
-      Decay: 0
+      Attack: 0.001
+      Decay: 0.5
       Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
   - Osc1Params:
-      Shape: 0
+      Shape: 2
     Osc2Params:
-      Shape: 0
+      Shape: 1
     ADSRParams:
-      Attack: 0
-      Decay: 0
+      Attack: 0.001
+      Decay: 0.5
       Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
-  - Osc1Params:
-      Shape: 0
-    Osc2Params:
-      Shape: 0
-    ADSRParams:
-      Attack: 0
-      Decay: 0
-      Sustain: 0
-      Release: 0
-    Function: 0
-    Volume: 0
+      Release: 0.2
+    Function: 1
+    Volume: 0.1
