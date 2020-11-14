@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class TomsMidiTest : MonoBehaviour
 {
-    private TH_Audio.MIDISound bgm;
+    public GameAudioInterface audioInterface;
+
+    [Range(0,1)]
+    public float player = 1;
+
+    [Range(0, 1)]
+    public float monster = 1;
+
+    [Range(0, 1)]
+    public float prox = 1;
+
     private TH_Audio.MIDISound bloop;
 
     // Start is called before the first frame update
     void Start()
     {
-        bgm = new TH_Audio.MIDISound("Assets\\MIDI\\loop2.mid");
         bloop = new TH_Audio.MIDISound("Assets\\MIDI\\bloop.mid");
-
-        bgm.Play(true);
     }
 
     // Update is called once per frame
@@ -24,14 +31,6 @@ public class TomsMidiTest : MonoBehaviour
             bloop.Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            bgm.SetBPM(100);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            bgm.SetBPM(300);
-        }
+        audioInterface.UpdateMonsterState(new GameAudioInterface.MonsterAudioUpdate() { MonsterSeesPlayer = monster, PlayerSeesMonster = player, Proximity = prox });
     }
 }
