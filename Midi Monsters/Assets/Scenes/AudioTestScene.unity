@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f36932381380fa4397bcf0c74bc8fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voiceData: {fileID: 11400000, guid: 5523eaf4dc7d76b45a988aaddf1d6175, type: 2}
 --- !u!4 &160558898
 Transform:
   m_ObjectHideFlags: 0
