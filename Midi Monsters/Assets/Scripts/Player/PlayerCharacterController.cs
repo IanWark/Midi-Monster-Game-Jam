@@ -25,6 +25,8 @@ public class PlayerCharacterController : MonoBehaviour
     public float maxSpeedCrouchedRatio = 0.5f;
     [Tooltip("Multiplicator for the sprint speed")]
     public float sprintSpeedModifier = 2f;
+    [Tooltip("When the monster predicts our future position based on our current movement, how many seconds ahead?")]
+    public float predictedPositionSeconds = 0.5f;
 
     [Header("Interaction Settings")]
     [Tooltip("How far away we can interact with an object.")]
@@ -142,7 +144,12 @@ public class PlayerCharacterController : MonoBehaviour
             if (m_footstepDistanceCounter >= 1f / chosenFootstepSFXFrequency)
             {
                 m_footstepDistanceCounter = 0f;
-                PlayFootstep();
+
+                // TODO For testing, only play footstep when sprinting
+                if (isSprinting)
+                {
+                    PlayFootstep();
+                }
             }
 
             // keep track of distance traveled for footsteps sound
@@ -170,7 +177,8 @@ public class PlayerCharacterController : MonoBehaviour
         audioSource.PlayOneShot(footstepSFX);
 
         // send sound event to monster
-        monster.DetectSound(new Monster.DetectedSound(transform.position));
+        Vector3 predictedPosition = transform.position + (characterVelocity * predictedPositionSeconds); // Where are we estimated to be predictedPositionSeconds later?
+        monster.DetectSound(new Monster.DetectedSound(transform.position, predictedPosition));
     }
 
     // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller

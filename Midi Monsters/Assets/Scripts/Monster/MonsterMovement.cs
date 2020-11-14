@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class MonsterMovement : MonoBehaviour
 {
+    [Header("Movement Speeds")]
     [SerializeField]
     private float walkingSpeed = 2f;
     public float WalkingSpeed { get { return walkingSpeed; } }
@@ -14,6 +15,10 @@ public class MonsterMovement : MonoBehaviour
     [SerializeField]
     private float chasingSpeed = 6f;
     public float ChasingSpeed { get { return chasingSpeed; } }
+
+    [Header("References")]
+    [SerializeField]
+    private Transform debugCurrentDestination;
 
     private NavMeshAgent navMeshAgent;
 
@@ -31,5 +36,7 @@ public class MonsterMovement : MonoBehaviour
     {
         navMeshAgent.speed = speed;
         navMeshAgent.destination = position;
+
+        debugCurrentDestination.position = position;
     }
 }

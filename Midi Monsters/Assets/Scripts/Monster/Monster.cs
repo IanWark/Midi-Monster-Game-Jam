@@ -4,12 +4,14 @@ public class Monster : MonoBehaviour
 {
     public class DetectedSound
     {
-        public DetectedSound(Vector3 position)
+        public DetectedSound(Vector3 position, Vector3 predictedPosition)
         {
             this.position = position;
+            this.predictedPosition = predictedPosition;
         }
 
         public Vector3 position;
+        public Vector3 predictedPosition;
     }
 
     private DetectedSound currentSound = null;
@@ -33,12 +35,15 @@ public class Monster : MonoBehaviour
         // Detectable things send an event to us
 
         // I think we do the distance check in here.
+        currentSound = detectedSound;
+        monsterMovement.MoveToPosition(currentSound.predictedPosition, monsterMovement.RunningSpeed);
 
-        if (currentSound == null || true)
+        /*
+        if (currentSound == null)
         {
-            currentSound = detectedSound;
-            monsterMovement.MoveToPosition(currentSound.position, monsterMovement.RunningSpeed);
+            
         }
+        */
 
         // else, we don't care about this sound.
     }
