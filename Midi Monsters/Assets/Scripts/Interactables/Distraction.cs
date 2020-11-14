@@ -42,7 +42,7 @@ public class Distraction : Interactable
         // notify monster if close enough to hear
         if (dist < audible_distance)
         {
-            monster.DetectSound(new Monster.DetectedSound(transform.position, transform.position)); // predicted == current for now
+            monster.DetectSound(new Monster.DetectedSound(transform.position, transform.position, 1)); // predicted == current for now
         }
 
         Debug.Log("Box has been interacted with.");

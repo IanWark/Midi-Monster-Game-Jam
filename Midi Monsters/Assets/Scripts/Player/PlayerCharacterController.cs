@@ -181,7 +181,7 @@ public class PlayerCharacterController : MonoBehaviour
 
         // send sound event to monster
         Vector3 predictedPosition = transform.position + (characterVelocity * predictedPositionSeconds); // Where are we estimated to be predictedPositionSeconds later?
-        monster.DetectSound(new Monster.DetectedSound(transform.position, predictedPosition));
+        monster.DetectSound(new Monster.DetectedSound(transform.position, predictedPosition, 1));
     }
 
     // Returns true if the slope angle represented by the given normal is under the slope angle limit of the character controller

@@ -5,14 +5,21 @@ public class Monster : MonoBehaviour
 {
     public class DetectedSound
     {
-        public DetectedSound(Vector3 position, Vector3 predictedPosition)
+        public Vector3 position;
+        public Vector3 predictedPosition;
+        public int volume;
+
+        public DetectedSound(Vector3 position, Vector3 predictedPosition, int volume)
         {
             this.position = position;
             this.predictedPosition = predictedPosition;
+            this.volume = volume;
         }
 
-        public Vector3 position;
-        public Vector3 predictedPosition;
+        public float GetPriority(Vector3 monsterPosition)
+        {
+            return InverseDistanceValue(monsterPosition, position) * volume;
+        }
     }
 
     public enum eMonsterState
@@ -23,9 +30,12 @@ public class Monster : MonoBehaviour
         Wander = 3,
     }
 
-    [SerializeField]
-    private Transform startWaypoint;
-    
+    [SerializeField, Range(0, 1), Tooltip("Threshold a sound must pass to be heard.")]
+    private float hearSoundThreshold = 0.25f;
+
+    [SerializeField, Range(0, 1.5f), Tooltip("Threshold a sound must pass for the monster to move at full speed.")]
+    private float sprintThreshold = 0.75f;
+
     private eMonsterState currentState = eMonsterState.Wander;
     public eMonsterState CurrentState { get { return currentState; } }
     private DetectedSound lastDetectedSound = null;
@@ -77,18 +87,26 @@ public class Monster : MonoBehaviour
 
     private void ExitStateInvestigatePoint()
     {
+        lastDetectedSound = null;
         currentState = eMonsterState.Wander;
         monsterStateWander.EnterState();
     }
 
+    // When a sound make a noise, it calls this to alert the monster to it
     public void DetectSound(DetectedSound detectedSound)
     {
-        // Detectable things send an event to us
-        // TODO Check if we can hear it, and if its great priority than our lastDetectedSound
-        lastDetectedSound = detectedSound;
+        // Sound priority must be above threshold
+        float newSoundPriority = detectedSound.GetPriority(transform.position);
+        if (newSoundPriority > hearSoundThreshold)
+        {
+            if (lastDetectedSound == null || newSoundPriority >= lastDetectedSound.GetPriority(transform.position))
+            {
+                lastDetectedSound = detectedSound;
 
-        currentState = eMonsterState.GoToSound; // Sprint at some point
-        monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
+                currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound; 
+                monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
+            }
+        }        
     }
 
     // Returns a random valid point on the navmesh within radius of position
@@ -105,8 +123,6 @@ public class Monster : MonoBehaviour
 
     static public float InverseDistanceValue(Vector3 position1, Vector3 position2)
     {
-        Vector3 distance = position1 - position2;
-
-        return (1f / distance.magnitude);
+        return (1f / Vector3.Distance(position1, position2));
     }
 }
