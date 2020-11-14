@@ -10,7 +10,7 @@ public class TomsMidiTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bgm = new TH_Audio.MIDISound("Assets\\MIDI\\loop1.mid");
+        bgm = new TH_Audio.MIDISound("Assets\\MIDI\\loop2.mid");
         bloop = new TH_Audio.MIDISound("Assets\\MIDI\\bloop.mid");
 
         bgm.Play(true);
@@ -22,6 +22,16 @@ public class TomsMidiTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             bloop.Play();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            bgm.SetBPM(100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            bgm.SetBPM(300);
         }
     }
 }
