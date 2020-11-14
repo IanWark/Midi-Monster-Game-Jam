@@ -30,6 +30,9 @@ public class Monster : MonoBehaviour
         Wander = 3,
     }
 
+    [SerializeField]
+    private bool debugPrint = false;
+
     [SerializeField, Range(0, 1), Tooltip("Threshold a sound must pass to be heard.")]
     private float hearSoundThreshold = 0.25f;
 
@@ -65,6 +68,11 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
+        if (debugPrint)
+        {
+            Debug.Log("currentState: " + currentState);
+        }
+
         if (currentState == eMonsterState.GoToSound || currentState == eMonsterState.SprintToSound)
         {
             monsterStateGoToSound.Tick();
@@ -99,7 +107,7 @@ public class Monster : MonoBehaviour
         float newSoundPriority = detectedSound.GetPriority(transform.position);
         if (newSoundPriority > hearSoundThreshold)
         {
-            if (lastDetectedSound == null || newSoundPriority >= lastDetectedSound.GetPriority(transform.position))
+            if (currentState == eMonsterState.Wander || currentState == eMonsterState.Investigate || newSoundPriority >= lastDetectedSound.GetPriority(transform.position))
             {
                 lastDetectedSound = detectedSound;
 

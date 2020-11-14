@@ -2,6 +2,9 @@
 
 public class MonsterAudioManager : MonoBehaviour
 {
+    [SerializeField]
+    private bool debugPrint = false;
+
     [Header("Monster State Values")]
     [SerializeField, Range(0,1), Tooltip("Value to return when in the chill state where we are randomly trying to find the player.")]
     private float wanderValue = 0f;
@@ -39,7 +42,10 @@ public class MonsterAudioManager : MonoBehaviour
             monsterAudioUpdate.MonsterSeesPlayer = GetMonsterSeesPlayerValue();
             monsterAudioUpdate.Proximity = GetMonsterProximityValue();
 
-            // Debug.Log("MonsterAudioUpdate: PlayerSeesMonster: " + monsterAudioUpdate.PlayerSeesMonster + " MonsterSeesPlayer: " + monsterAudioUpdate.MonsterSeesPlayer + " Proximity: " + monsterAudioUpdate.Proximity);
+            if (debugPrint)
+            {
+                Debug.Log("MonsterAudioUpdate: PlayerSeesMonster: " + monsterAudioUpdate.PlayerSeesMonster + " MonsterSeesPlayer: " + monsterAudioUpdate.MonsterSeesPlayer + " Proximity: " + monsterAudioUpdate.Proximity);
+            }
 
             audioInterface.UpdateMonsterState(monsterAudioUpdate);
         } 
