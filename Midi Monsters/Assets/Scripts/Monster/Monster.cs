@@ -16,6 +16,7 @@ public class Monster : MonoBehaviour
 
     public enum eMonsterState
     {
+        SprintToSound = 0,
         GoToSound = 1,
         Investigate = 2,
         Wander = 3,
@@ -25,6 +26,7 @@ public class Monster : MonoBehaviour
     private Transform startWaypoint;
     
     private eMonsterState currentState = eMonsterState.Wander;
+    public eMonsterState CurrentState { get { return currentState; } }
     private DetectedSound lastDetectedSound = null;
 
     MonsterStateGoToSound monsterStateGoToSound;
@@ -52,7 +54,7 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        if (currentState == eMonsterState.GoToSound)
+        if (currentState == eMonsterState.GoToSound || currentState == eMonsterState.SprintToSound)
         {
             monsterStateGoToSound.Update();
         }
@@ -84,9 +86,7 @@ public class Monster : MonoBehaviour
         // TODO Check if we can hear it, and if its great priority than our lastDetectedSound
         lastDetectedSound = detectedSound;
 
-        currentState = eMonsterState.GoToSound;
-        monsterStateGoToSound.EnterState(lastDetectedSound);
+        currentState = eMonsterState.GoToSound; // Sprint at some point
+        monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
     }
-
-
 }

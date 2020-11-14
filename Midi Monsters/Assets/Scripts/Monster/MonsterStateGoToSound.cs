@@ -13,7 +13,7 @@ public class MonsterStateGoToSound
         this.monsterMovement = monsterMovement;
     }
 
-    public void EnterState(Monster.DetectedSound detectedSound)
+    public void EnterState(Monster.DetectedSound detectedSound, Monster.eMonsterState monsterState)
     {
         // I think we do the distance check in here.
         monsterMovement.MoveToPosition(detectedSound.predictedPosition, monsterMovement.RunningSpeed);
