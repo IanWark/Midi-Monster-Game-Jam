@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 768579467}
   - component: {fileID: 768579466}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: InteractableBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 768579465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8701576374400e345a77c1978108b89f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1de6f49066d87bb45961cfa3e0da62ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrompt: Interact
@@ -711,6 +711,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2254227859758985031, guid: 42616c2585336e5469e66e08606913ab, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254227859758985031, guid: 42616c2585336e5469e66e08606913ab, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2254227859900582606, guid: 42616c2585336e5469e66e08606913ab, type: 3}
       propertyPath: monster
       value: 

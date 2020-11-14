@@ -24,12 +24,6 @@ public class Monster : MonoBehaviour
         monsterMovement = GetComponent<MonsterMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void DetectSound(DetectedSound detectedSound)
     {
         // Detectable things send an event to us
