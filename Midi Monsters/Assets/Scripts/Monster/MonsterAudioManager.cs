@@ -28,22 +28,30 @@ public class MonsterAudioManager : MonoBehaviour
     private void Update()
     {
         // Update the audioInterface with our info
-        //audioInterface.UpdateMonsterState();
+        if (audioInterface != null)
+        {
+            GameAudioInterface.MonsterAudioUpdate monsterAudioUpdate = new GameAudioInterface.MonsterAudioUpdate();
+            monsterAudioUpdate.PlayerSeesMonster = GetPlayerSeesMonsterValue();
+            monsterAudioUpdate.MonsterSeesPlayer = GetMonsterSeesPlayerValue();
+            monsterAudioUpdate.Proximity = GetMonsterProximityValue();
+
+            audioInterface.UpdateMonsterState(monsterAudioUpdate);
+        } 
     }
 
-    public float GetPlayerFacingMonsterValue()
+    public float GetPlayerSeesMonsterValue()
     {
         //Vector3 playerFacing = player.transform.forward;
         return 0;
     }
 
-    public float GetMonsterProximityToPlayerValue()
+    public float GetMonsterProximityValue()
     {
         // TODO add designer modifiable modifiers
         return Monster.InverseDistanceValue(player.transform.position, monster.transform.position);
     }
 
-    public float GetMonsterChaseStateValue()
+    public float GetMonsterSeesPlayerValue()
     {
         switch(monster.CurrentState)
         {
