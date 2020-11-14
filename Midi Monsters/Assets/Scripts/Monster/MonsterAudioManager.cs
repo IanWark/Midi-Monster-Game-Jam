@@ -12,6 +12,10 @@ public class MonsterAudioManager : MonoBehaviour
     [SerializeField, Range(0, 1), Tooltip("Value to return when we are going max speed to a sound we heard.")]
     private float sprintValue = 1f;
 
+    [Header("Modifiers")]
+    [SerializeField, Tooltip("The angle where the playerSeesMonster value is set to 0. 180 is completely away from the monster.")]
+    private float playerSeesMonsterMaxAngle = 180;
+
     [Header("References")]
     [SerializeField]
     private PlayerCharacterController player;
@@ -43,8 +47,16 @@ public class MonsterAudioManager : MonoBehaviour
 
     public float GetPlayerSeesMonsterValue()
     {
-        //Vector3 playerFacing = player.transform.forward;
-        return 0;
+        // get dotproduct from player facing angle to monster's position
+        Vector3 directionFromPlayerToMonster = (monster.transform.position - player.transform.position).normalized;
+        float dotProduct = Vector3.Dot(player.transform.forward, directionFromPlayerToMonster);
+
+        // make it only go away at the correct angle
+        float angleValue = (playerSeesMonsterMaxAngle - 90f) / 180f;
+        dotProduct = angleValue + (dotProduct * (1f - angleValue));
+
+        // no negatives allowed, clamp it
+        return Mathf.Clamp(dotProduct, 0, 1); 
     }
 
     public float GetMonsterProximityValue()

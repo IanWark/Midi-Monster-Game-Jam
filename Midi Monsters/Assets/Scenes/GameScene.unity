@@ -34503,6 +34503,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 500797898013786961, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
+      propertyPath: walkingSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 500797898013786961, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
       propertyPath: debugCurrentDestination
       value: 
       objectReference: {fileID: 837994813}
@@ -34518,6 +34522,10 @@ PrefabInstance:
       propertyPath: audioInterface
       value: 
       objectReference: {fileID: 1475115915}
+    - target: {fileID: 500797898013786974, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
+      propertyPath: playerSeesMonsterAngle
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 500797898013786975, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -34561,10 +34569,6 @@ PrefabInstance:
     - target: {fileID: 500797898013786975, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 500797898154207257, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
-      propertyPath: sprintThreshold
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4822028080526680836, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
       propertyPath: minWaitAtPoint
