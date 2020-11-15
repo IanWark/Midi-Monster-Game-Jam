@@ -6,6 +6,10 @@ using UnityEngine;
 public class Door : Interactable
 {
     [SerializeField]
+    private string isOpenInteractionPrompt = "Close";
+    [SerializeField]
+    private string isClosedInteractionPrompt = "Open";
+    [SerializeField]
     public Transform doorVisual;
 
     // The target marker.
@@ -31,6 +35,8 @@ public class Door : Interactable
     {
         m_ClosedPosition = doorVisual.rotation;
         m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
+
+        SetInteractionPrompt();
     }
 
     // Used https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Vector3.RotateTowards.html
@@ -92,6 +98,12 @@ public class Door : Interactable
         ////this.enabled = true;
         ///
         m_Open = !m_Open;
+        SetInteractionPrompt();
+    }
+
+    private void SetInteractionPrompt()
+    {
+        interactionPrompt = m_Open ? isClosedInteractionPrompt : isOpenInteractionPrompt;
     }
 
     public override bool IsInteractable()
