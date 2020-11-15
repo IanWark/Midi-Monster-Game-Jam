@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugPrint: 0
   hearSoundThreshold: 0.1
-  sprintThreshold: 0.75
+  sprintThreshold: 0.6
 --- !u!114 &500797898013786961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSpeed: 1
-  runningSpeed: 2
-  sprintingSpeed: 4
+  runningSpeed: 2.5
+  sprintingSpeed: 5
   debugCurrentDestination: {fileID: 0}
 --- !u!114 &500797898013786974
 MonoBehaviour:
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugPrint: 0
   wanderValue: 0
-  investigateValue: 0.25
-  runValue: 0.75
+  investigateValue: 0.33
+  runValue: 0.66
   sprintValue: 1
   playerSeesMonsterMaxAngle: 45
   playerSeesMonsterUseProximity: 1
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8772fbbc8f8354ebc6e05e380cdcc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderPointFromPlayerRadius: 40
+  wanderPointFromPlayerRadius: 30
   minWaitAtPoint: 0
   maxWaitAtPoint: 2
 --- !u!114 &7511818031752311996
@@ -240,8 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaitAtPoint: 0
   maxWaitAtPoint: 1
-  investigateRadius: 10
-  investigatePoints: 3
+  investigateRadius: 5
+  investigatePoints: 2
 --- !u!114 &3400370254043979420
 MonoBehaviour:
   m_ObjectHideFlags: 0
