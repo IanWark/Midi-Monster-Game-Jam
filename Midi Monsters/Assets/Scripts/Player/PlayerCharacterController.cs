@@ -58,8 +58,6 @@ public class PlayerCharacterController : MonoBehaviour
     public float normalFootstepDetectionVolume = 2f;
     [Tooltip("Volume when talking a sprint step for the purposes of AI detection.")]
     public float sprintFootstepDetectionVolume = 4f;
-    [Tooltip("Sound played for footsteps")]
-    public AudioClip footstepSFX;
 
     public UnityAction<bool> onStanceChanged;
 
@@ -187,8 +185,6 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void PlayFootstep(bool isSprinting)
     {
-        audioSource.PlayOneShot(footstepSFX);
-
         float detectionVolume = normalFootstepDetectionVolume;
         if (isSprinting)
         {
