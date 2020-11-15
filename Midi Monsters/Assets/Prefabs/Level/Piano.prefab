@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33502211205281548}
   - component: {fileID: 23279477113104760}
   - component: {fileID: 1046969107628564072}
+  - component: {fileID: 2945493088885854463}
+  - component: {fileID: 1235375552}
   m_Layer: 0
   m_Name: Piano
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259781562285434}
-  m_LocalRotation: {x: -0.50000036, y: -0.49999973, z: -0.49999967, w: 0.50000024}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -1.42, y: 1.04, z: -7.28}
   m_LocalScale: {x: 875, y: 118.560005, z: 120.00001}
   m_Children:
@@ -103,6 +105,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0022000016, y: 0.0046315826, z: 0.012000001}
   m_Center: {x: 0.0000000018648265, y: 0.0013157901, z: -0.0010000011}
+--- !u!114 &2945493088885854463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259781562285434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 1
+  AutoPlay: 0
+  Loop: 0
+--- !u!114 &1235375552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259781562285434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2d645c7883f9f4880167686f3dd4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: Interact
+  delay: 0
+  audible_distance: 200
+  monster: {fileID: 0}
 --- !u!1 &1420705555554570
 GameObject:
   m_ObjectHideFlags: 0

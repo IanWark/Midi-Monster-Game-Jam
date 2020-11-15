@@ -7,7 +7,11 @@ public class MonsterFootstepEmitter : Emitter
     [SerializeField]
     MonsterMovement movement;
 
+    public ParticleSystem particles;
+
     public float StepSpeedScaler = 30.0f;
+
+    public float timeUntilNextStep = 0;
 
     // Update is called once per frame
     void Update()
@@ -19,8 +23,20 @@ public class MonsterFootstepEmitter : Emitter
         }
         else
         {
+            float stepsPerMinute = movement.GetAgentSpeed() * StepSpeedScaler;
+
             TH_Audio.SetChannelVolume(11, 0.2f);
-            soundMIDI.SetBPM(movement.GetAgentSpeed() * StepSpeedScaler);
+            soundMIDI.SetBPM(stepsPerMinute);
+
+            timeUntilNextStep -= UnityEngine.Time.deltaTime;
+            if (timeUntilNextStep <= 0)
+            {
+                timeUntilNextStep = 1;
+
+                particles.Play();
+                PlaySound();
+            }
+
         }
     }
 }
