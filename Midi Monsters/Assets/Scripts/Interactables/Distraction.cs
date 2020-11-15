@@ -19,14 +19,13 @@ public class Distraction : Interactable
     private Monster monster;
     private Monster Monster { get { return monster; } }
 
+    [SerializeField, Tooltip("Reference to Emitter script")]
     private Emitter emitter;
 
     public void Start()
     {
-        monsterObj = GameObject.Find("Monster");
-        monster = monsterObj.GetComponent<Monster>();
-        emitter = GetComponent<Emitter>();
-
+        monster = GameObject.FindObjectOfType<Monster>();
+        
     }
 
     public override bool IsInteractable()
@@ -36,12 +35,18 @@ public class Distraction : Interactable
 
     public override void Interact(PlayerCharacterController pc)
     {
+        monster = GameObject.FindObjectOfType<Monster>();
+        if (monster == null)
+        {
+            return;
+        }
         StartCoroutine(TriggerDistraction());
         
     }
 
     private IEnumerator TriggerDistraction()
     {
+   
         // wait for delay
         if (delay > 0)
         {
