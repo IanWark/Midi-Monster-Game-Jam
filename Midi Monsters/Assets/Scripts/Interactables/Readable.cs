@@ -9,45 +9,49 @@ public class Readable : Interactable
 {
 
     [SerializeField, Tooltip("Image to display.")]
-    private Texture displayTexture;
-    public Texture DisplayTexture{ get { return displayTexture; } }
+    private Texture m_DisplayTexture;
+    public Texture DisplayTexture{ get { return m_DisplayTexture; } }
 
 
     [SerializeField, Tooltip("Coordinates")]
-    public Vector2 screen_pos = Vector2.zero;
+    public Vector2 m_ScreenPos = Vector2.zero;
 
-    private GameObject playerObj;
-    private GameObject readableObj;
-// private Canvas canvas;
-    private Image image;
-    private Vector3 initialLookDirection = Vector3.zero;
+    private GameObject m_PlayerObj;
+    private GameObject m_ReadableObj;
+    // private Canvas canvas;
+    private Image m_Image;
+    private Vector3 m_InitialLookDirection = Vector3.zero;
 
-    [SerializeField, Tooltip("Main Camera")]
-    private Camera camera;
+    private Camera m_Camera;
 
-    private bool isReading;
+    private bool m_isReading { set; get; }
 
     public void Start()
     {
-        playerObj = GameObject.Find("Player");
-        readableObj = GameObject.Find("Player/Canvas/Readable");
-        if (!readableObj)
+        m_PlayerObj = GameObject.Find("Player");
+        m_Camera = GameObject.Find("Player/Main Camera").GetComponent<Camera>();
+        m_ReadableObj = GameObject.Find("Player/Canvas/Readable");
+
+        if (!m_ReadableObj)
         {
             return;
         }
-        image = readableObj.GetComponent<Image>();
+        m_Image = m_ReadableObj.GetComponent<Image>();
+        this.enabled = false; // no need for Update until reading
         
     }
 
     public void Update()
     {
-        if (isReading)
+        if (m_isReading)
         {
-            if (Vector3.Angle(camera.ScreenPointToRay(Input.mousePosition).direction, initialLookDirection) > 10)
+            if (Vector3.Angle(m_Camera.ScreenPointToRay(Input.mousePosition).direction, m_InitialLookDirection) > 10)
             {
-                isReading = false;
-                image.enabled = false;
+                m_isReading = false;
+                m_Image.enabled = false;
+                this.enabled = false; // stop update checks
                 Debug.Log("Stop read");
+                
             }
         }
     }
@@ -55,12 +59,13 @@ public class Readable : Interactable
 
     public override void Interact()
     {
-        isReading = true;
-        initialLookDirection = camera.ScreenPointToRay(Input.mousePosition).direction;
-        Rect dimensions = new Rect(screen_pos.x, screen_pos.y, displayTexture.width, displayTexture.height);
+        m_isReading = true;
+        m_InitialLookDirection = m_Camera.ScreenPointToRay(Input.mousePosition).direction;
+        Rect dimensions = new Rect(m_ScreenPos.x, m_ScreenPos.y, m_DisplayTexture.width, m_DisplayTexture.height);
         Vector2 pivot = new Vector2(0.5f, 0.5f);
-        image.sprite = Sprite.Create((Texture2D)displayTexture, dimensions, pivot);
-        image.enabled = true;
+        m_Image.sprite = Sprite.Create((Texture2D)m_DisplayTexture, dimensions, pivot);
+        m_Image.enabled = true;
+        this.enabled = true;
        Debug.Log("Read");
     }
 

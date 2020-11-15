@@ -268,9 +268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrompt: Read
-  displayTexture: {fileID: 2800000, guid: e3c6045ae3f9cea419f1b128cc8f4f42, type: 3}
-  screen_pos: {x: 0, y: 0}
-  camera: {fileID: 408253809}
+  m_DisplayTexture: {fileID: 2800000, guid: e3c6045ae3f9cea419f1b128cc8f4f42, type: 3}
+  m_ScreenPos: {x: 0, y: 0}
 --- !u!65 &408196564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -347,11 +346,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &408253809 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2254227861062573394, guid: 42616c2585336e5469e66e08606913ab, type: 3}
-  m_PrefabInstance: {fileID: 2254227861441703969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &570596366
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +933,10 @@ PrefabInstance:
     - target: {fileID: 500797898013786962, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
       propertyPath: m_Name
       value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 500797898013786962, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 500797898013786975, guid: 25f3c3573060e6a40950d03f66433e0b, type: 3}
       propertyPath: m_RootOrder
