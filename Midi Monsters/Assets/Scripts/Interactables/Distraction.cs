@@ -24,7 +24,7 @@ public class Distraction : Interactable
 
     public void Start()
     {
-        monster = GameObject.FindObjectOfType<Monster>();
+        monster = FindObjectOfType<Monster>();
         emitter = GetComponent<Emitter>();
     }
 
@@ -35,7 +35,7 @@ public class Distraction : Interactable
 
     public override void Interact(PlayerCharacterController pc)
     {
-        monster = GameObject.FindObjectOfType<Monster>();
+        monster = FindObjectOfType<Monster>();
         StartCoroutine(TriggerDistraction());
 
     }
