@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaff3731c7a8e6e4a8179536ff33c00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivity: 1
+  lookSensitivity: 2
   invertYAxis: 1
   invertXAxis: 0
 --- !u!143 &2254227859900582608
