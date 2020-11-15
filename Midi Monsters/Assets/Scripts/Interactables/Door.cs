@@ -10,6 +10,8 @@ public class Door : Interactable
     [SerializeField]
     private string isClosedInteractionPrompt = "Open";
     [SerializeField]
+    private string isLockedInteractionPrompt = "Locked";
+    [SerializeField]
     public Transform doorVisual;
 
     // The target marker.
@@ -25,6 +27,8 @@ public class Door : Interactable
     private bool m_Opening = false;
     private bool m_Closing = false;
 
+    List<DoorframeTrigger> doorframeTriggers = new List<DoorframeTrigger>();
+
     //private Vector3 openRotation;
     //private Vector3 closeRotation;
     //private Vector3 close;
@@ -36,7 +40,12 @@ public class Door : Interactable
         m_ClosedPosition = doorVisual.rotation;
         m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
 
-        SetInteractionPrompt();
+        Open(m_Open);
+    }
+
+    public void RegisterDoorframeTrigger(DoorframeTrigger trigger)
+    {
+        doorframeTriggers.Add(trigger);
     }
 
     // Used https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Vector3.RotateTowards.html
@@ -46,36 +55,6 @@ public class Door : Interactable
         Quaternion destination = m_Open ? m_OpenPosition : m_ClosedPosition;
 
         doorVisual.rotation = Quaternion.RotateTowards(doorVisual.rotation, destination, speed);
-
-        //if (IsMoving())
-        //{
-        //    float singleStep = speed * Time.deltaTime;
-        //    Quaternion newDirection = Quaternion.identity;
-
-
-        //    if (m_Opening)
-        //    {
-        //        newDirection = Quaternion.RotateTowards(transform.rotation, m_OpenPosition, speed);
-
-        //    }
-        //    else if (m_Closing)
-        //    {
-        //        newDirection = Quaternion.RotateTowards(transform.rotation, m_ClosedPosition, speed);
-        //    }
-
-        //    if (transform.rotation != newDirection)
-        //    {
-        //        transform.rotation = newDirection;
-        //        Debug.Log("Moving!");
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("Door moving.");
-        //        m_Open = !m_Open;
-        //        m_Opening = false;
-        //        m_Closing = false;
-        //    }
-        //}
     }
 
     public bool IsMoving()
@@ -85,27 +64,50 @@ public class Door : Interactable
 
     public override void Interact()
     {
-        //Debug.Log("Door Toggle.");
-        //if (m_Open)
-        //{
-        //    m_Closing = true;
+        Open(!m_Open);
+    }
 
-        //}
-        //else
-        //{
-        //    m_Opening = true;
-        //}
-        ////this.enabled = true;
-        ///
-        m_Open = !m_Open;
-        SetInteractionPrompt();
+    // Attempt to set m_open to the bool
+    public void Open(bool isOpen)
+    {
+        if (IsOpenable())
+        {
+            m_Open = isOpen;
+            SetInteractionPrompt();
+        }
     }
 
     private void SetInteractionPrompt()
     {
-        interactionPrompt = m_Open ? isClosedInteractionPrompt : isOpenInteractionPrompt;
+        if (IsOpenable())
+        {
+            if (m_Open)
+            {
+                interactionPrompt = isOpenInteractionPrompt;
+            }
+            else
+            {
+                interactionPrompt = isClosedInteractionPrompt;
+            }
+        }
+        else
+        {
+            interactionPrompt = isLockedInteractionPrompt;
+        }
+
+        foreach(DoorframeTrigger trigger in doorframeTriggers)
+        {
+            trigger.SetInteractionPrompt(interactionPrompt);
+        }
     }
 
+    // Does it open when interacted with?
+    public bool IsOpenable()
+    {
+        return true;
+    }
+
+    // Does it show interaction prompt?
     public override bool IsInteractable()
     {
         return true;
