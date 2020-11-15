@@ -98,7 +98,7 @@ public class GameAudioInterface : MonoBehaviour
                 emitter.soundMIDI.SetVolume(distance);
             }
             
-            if (player.characterVelocity.magnitude < 0.5f)
+            if (Mathf.Abs(player.characterVelocity.x) < 0.5f && Mathf.Abs(player.characterVelocity.z) < 0.5f)
             {
                 UpdatePlayerFootstep(0, 200);
             }
