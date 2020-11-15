@@ -16,7 +16,8 @@ public class Door : Interactable, Lockable
 
     [SerializeField]
     public Transform doorVisual;
-
+    [SerializeField]
+    public DoorHandle doorHandle;
 
     private PlayerCharacterController m_PlayerController; // need for keys
     // The target marker.
@@ -45,6 +46,7 @@ public class Door : Interactable, Lockable
         m_ClosedPosition = doorVisual.rotation;
         m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
 
+        doorHandle.SetLock(isLocked);
         Open(m_Open);
         SetInteractionPrompt();
     }
@@ -135,6 +137,7 @@ public class Door : Interactable, Lockable
             m_PlayerController.UseKey();
             isLocked = false;
             SetInteractionPrompt();
+            doorHandle.SetLock(isLocked);
             return true;
         }
         return false;

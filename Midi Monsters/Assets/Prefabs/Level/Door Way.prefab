@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4740967986379710}
   - component: {fileID: 33640243788890758}
   - component: {fileID: 23928402492671462}
+  - component: {fileID: 2003332455747998686}
   m_Layer: 9
   m_Name: Handle
   m_TagString: Untagged
@@ -183,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72ddb03c5a7a78e48816ec68e9eac314, type: 2}
+  - {fileID: 2100000, guid: 482fb33d697644248a36e8366013b310, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,6 +206,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2003332455747998686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507359225425070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e66a1582fbce304a851742dcc82e6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMat: {fileID: 2100000, guid: 482fb33d697644248a36e8366013b310, type: 2}
+  lockedMat: {fileID: 2100000, guid: 80b3b062268be8f4795ecd800b51a257, type: 2}
 --- !u!1 &1562592688063336
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +304,9 @@ MonoBehaviour:
   isOpenInteractionPrompt: Close
   isClosedInteractionPrompt: Open
   isLockedInteractionPrompt: Locked
+  isLocked: 0
   doorVisual: {fileID: 4224273432761164}
+  doorHandle: {fileID: 2003332455747998686}
   speed: 1
   m_Open: 0
 --- !u!33 &33452882059857328
