@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 500797896223887694}
   - component: {fileID: 500797896223887695}
   - component: {fileID: 500797896223887680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +205,8 @@ MonoBehaviour:
   runValue: 0.75
   sprintValue: 1
   playerSeesMonsterMaxAngle: 45
+  playerSeesMonsterUseProximity: 1
+  playerSeesMonsterMultiplier: 2
   player: {fileID: 0}
   audioInterface: {fileID: 0}
 --- !u!114 &4822028080526680836

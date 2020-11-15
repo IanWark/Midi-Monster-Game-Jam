@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInputHandler), typeof(AudioSource))]
@@ -184,7 +185,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
-    void PlayFootstep(bool isSprinting)
+    private void PlayFootstep(bool isSprinting)
     {
         audioSource.PlayOneShot(footstepSFX);
 
@@ -298,5 +299,22 @@ public class PlayerCharacterController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.layer == 8) // magic number :(
+        {
+            Die();
+        }
+    }
+
+    // fukken die
+    public void Die()
+    {
+        // TODO - do more than abruptly restart
+
+        // Reload scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
