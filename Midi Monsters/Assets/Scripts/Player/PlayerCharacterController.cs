@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,18 @@ public class PlayerCharacterController : MonoBehaviour
     public Monster monster;
     [SerializeField]
     private TextMeshProUGUI interactText = null;    
-    public Animator fadeOutAnim = null;
+    public Animator deathAnim = null;
+    public Animator winAnim = null;
+    public TextMeshProUGUI winText = null;
+    public Button winButton = null;
 
     [Header("General")]
     [Tooltip("Force applied downward when in the air")]
     public float gravityDownForce = 20f;
     [Tooltip("Time in seconds before reloading scene")]
     public float deathDelay = 1;
+    [Tooltip("Time in seconds before ending")]
+    public float winDelay = 1;
 
     [Header("Movement")]
     [Tooltip("Max movement speed when not sprinting")]
@@ -327,6 +333,10 @@ public class PlayerCharacterController : MonoBehaviour
         {
             StartCoroutine(Die());
         }
+        else if (other.gameObject.layer == 15)
+        {
+            StartCoroutine(Win());
+        }
     }
 
     // fukken die
@@ -334,8 +344,8 @@ public class PlayerCharacterController : MonoBehaviour
     {
         // Play death sound and fade out screen
         FindObjectOfType<GameAudioInterface>().PlayMIDISfx(GameAudioInterface.MIDISfx.PlayerDeath);
-        fadeOutAnim.speed = 1f / deathDelay;
-        fadeOutAnim.SetBool("FadeOut", true);
+        deathAnim.speed = 1f / deathDelay;
+        deathAnim.SetBool("FadeOut", true);
 
         isDead = true;
 
@@ -343,6 +353,28 @@ public class PlayerCharacterController : MonoBehaviour
 
         // Reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public IEnumerator Win()
+    {
+        // Play fade out screen
+        winAnim.speed = 1f / deathDelay;
+        winAnim.SetBool("FadeOut", true);
+
+        isDead = true;
+
+        yield return new WaitForSeconds(winDelay);
+
+        // Stop monster
+        winText.gameObject.SetActive(true);
+        winButton.gameObject.SetActive(true);
+        winButton.onClick.AddListener(Quit);
+        monster.gameObject.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     internal void AddKey()

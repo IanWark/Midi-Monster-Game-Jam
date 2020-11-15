@@ -20,6 +20,7 @@ public class Door : Interactable, Lockable
     public Transform doorVisual;
     [SerializeField]
     public DoorHandle doorHandle;
+    private MonsterManager monsterManager;
 
     private PlayerCharacterController m_PlayerController; // need for keys
     // The target marker.
@@ -47,6 +48,7 @@ public class Door : Interactable, Lockable
         m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
 
         m_PlayerController = FindObjectOfType<PlayerCharacterController>();
+        monsterManager = FindObjectOfType<MonsterManager>();
 
         doorHandle.SetLock(isLocked);
         Open(m_Open);
@@ -135,6 +137,7 @@ public class Door : Interactable, Lockable
             m_PlayerController.UseKey();
             isLocked = false;
             doorHandle.SetLock(isLocked);
+            monsterManager.LevelUpMonster();
             return true;
         }
         return false;
