@@ -14,6 +14,10 @@ public class MonsterAudioManager : MonoBehaviour
     private float runValue = 0.75f;
     [SerializeField, Range(0, 1), Tooltip("Value to return when we are going max speed to a sound we heard.")]
     private float sprintValue = 1f;
+    [SerializeField, Tooltip("Seconds before a sound is considered 'old'.")]
+    private float oldSoundSeconds = 3f;
+    [SerializeField, Range(0, 1), Tooltip("Multiplier for when we are running to a sound we heard a while ago. Only applies to run/sprint values.")]
+    private float oldSoundValueMultiplier = 0.75f;
 
     [Header("Modifiers")]
     [SerializeField, Tooltip("The angle where the playerSeesMonster value is set to 0. 180 is completely away from the monster.")]
@@ -84,20 +88,34 @@ public class MonsterAudioManager : MonoBehaviour
 
     public float GetMonsterSeesPlayerValue()
     {
-        switch(monster.CurrentState)
+        float value = wanderValue;
+
+        switch (monster.CurrentState)
         {
             case Monster.eMonsterState.Wander:
-                return wanderValue;
+                value = wanderValue;
+                break;
             case Monster.eMonsterState.Investigate:
-                return investigateValue;
+                value = investigateValue;
+                break;
             case Monster.eMonsterState.GoToSound:
-                return runValue;
+                value = runValue;
+                break;
             case Monster.eMonsterState.SprintToSound:
-                return sprintValue;
+                value = sprintValue;
+                break;
+            default:
+                // Oh no!
+                Debug.Assert(false, "GetMonsterState - Monster in invalid state!");
+                break;
         }
 
-        // Oh no!
-        Debug.Assert(false, "GetMonsterState - Monster in invalid state!");
-        return wanderValue;
+        if (monster.timeSinceLastSound > oldSoundSeconds 
+            && (monster.CurrentState == Monster.eMonsterState.GoToSound || monster.CurrentState == Monster.eMonsterState.SprintToSound))
+        {
+            value *= oldSoundValueMultiplier;
+        }
+       
+        return value;
     }
 }

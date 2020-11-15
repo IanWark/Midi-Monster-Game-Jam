@@ -206,6 +206,8 @@ MonoBehaviour:
   investigateValue: 0.33
   runValue: 1
   sprintValue: 1
+  oldSoundSeconds: 3
+  oldSoundValueMultiplier: 0.33
   playerSeesMonsterMaxAngle: 45
   playerSeesMonsterUseProximity: 1
   playerSeesMonsterMultiplier: 2

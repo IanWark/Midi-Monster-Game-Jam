@@ -42,6 +42,7 @@ public class Monster : MonoBehaviour
     private eMonsterState currentState = eMonsterState.Wander;
     public eMonsterState CurrentState { get { return currentState; } }
     private DetectedSound lastDetectedSound = null;
+    public float timeSinceLastSound { get; private set; }
 
     MonsterStateGoToSound monsterStateGoToSound;
     MonsterStateInvestigate monsterStateInvestigatePoint;
@@ -72,6 +73,8 @@ public class Monster : MonoBehaviour
         {
             Debug.Log("currentState: " + currentState);
         }
+
+        timeSinceLastSound += Time.deltaTime;
 
         if (currentState == eMonsterState.GoToSound || currentState == eMonsterState.SprintToSound)
         {
@@ -108,6 +111,7 @@ public class Monster : MonoBehaviour
         if (newSoundPriority > hearSoundThreshold)
         {
             lastDetectedSound = detectedSound;
+            timeSinceLastSound = 0;
 
             currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound;
             monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
