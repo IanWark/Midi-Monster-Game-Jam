@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1215270108446759985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4713444388639484129}
+  - component: {fileID: 6391268746444762981}
+  m_Layer: 0
+  m_Name: Monster Collision Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4713444388639484129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215270108446759985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2254227859900582609}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6391268746444762981
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215270108446759985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2254227859689205763
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +265,7 @@ GameObject:
   - component: {fileID: 2254227859900582606}
   - component: {fileID: 2254227859900582610}
   - component: {fileID: 2254227859900582608}
+  - component: {fileID: 2470272465995357723}
   - component: {fileID: 2254227859900582611}
   m_Layer: 0
   m_Name: Player
@@ -241,6 +286,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2254227861062573397}
+  - {fileID: 4713444388639484129}
   - {fileID: 2254227861312676828}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -277,7 +323,6 @@ MonoBehaviour:
   crouchFootstepDetectionVolume: 1
   normalFootstepDetectionVolume: 2
   sprintFootstepDetectionVolume: 4
-  footstepSFX: {fileID: 8300000, guid: 2602a24f4917c044caba338032d215e2, type: 3}
 --- !u!114 &2254227859900582610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +356,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2470272465995357723
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2254227859900582607}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &2254227859900582611
 AudioSource:
   m_ObjectHideFlags: 0
@@ -524,7 +585,7 @@ RectTransform:
   - {fileID: 2254227859689205762}
   - {fileID: 2783512672151177896}
   m_Father: {fileID: 2254227859900582609}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

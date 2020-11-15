@@ -297,9 +297,9 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit.gameObject.layer == 8) // magic number :(
+        if (other.gameObject.layer == 8) // magic number :(
         {
             Die();
         }
