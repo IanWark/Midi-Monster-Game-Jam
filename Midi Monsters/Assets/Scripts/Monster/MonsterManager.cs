@@ -42,6 +42,11 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     private MonsterStateWander monsterStateWander;
 
+    private void Start()
+    {
+        SpawnMonster();
+    }
+
     public void SpawnMonster()
     {
         StartCoroutine(SpawningCoroutine());
