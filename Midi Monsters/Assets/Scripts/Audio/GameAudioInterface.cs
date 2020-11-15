@@ -6,7 +6,7 @@ public class GameAudioInterface : MonoBehaviour
 {
     private TH_Audio.MIDISound layeredMusic;
     private TH_Audio.MIDISound playerFootstep;
-    //private TH_Audio.MIDISound monsterFootstep;
+    private TH_Audio.MIDISound monsterFootstep;
 
     public static GameAudioInterface Instance; // Lol
 
@@ -20,6 +20,7 @@ public class GameAudioInterface : MonoBehaviour
         AlarmClock,
         CoffeePot,
         PlayerDeath,
+        MonsterFootstep,
         COUNT
     }
 
@@ -48,10 +49,20 @@ public class GameAudioInterface : MonoBehaviour
         playerFootstep.SetVolume(0);
         playerFootstep.Play(true);
 
+        monsterFootstep = new TH_Audio.MIDISound("Assets\\MIDI\\step.mid");
+        monsterFootstep.SetVolume(0);
+        monsterFootstep.Play(true);
+
         for (MIDISfx i = 0; i < MIDISfx.COUNT; i++)
         {
             soundLibrary[i] = new TH_Audio.MIDISound("Assets\\MIDI\\SFX\\" + i.ToString() + ".mid");
         }
+
+        TH_Audio.SetChannelVolume(0, 0);
+        TH_Audio.SetChannelVolume(1, 0);
+        TH_Audio.SetChannelVolume(2, 0);
+        TH_Audio.SetChannelVolume(3, 0);
+        TH_Audio.SetChannelVolume(9, 0);
     }
 
     public void UpdateMonsterState(MonsterAudioUpdate update)

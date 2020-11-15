@@ -135,16 +135,16 @@ MonoBehaviour:
     Function: 8
     Volume: 0.03
   - Osc1Params:
-      Shape: 2
+      Shape: 1
     Osc2Params:
       Shape: 1
     ADSRParams:
       Attack: 0.001
-      Decay: 0.5
-      Sustain: 0
-      Release: 0.2
-    Function: 1
-    Volume: 0.1
+      Decay: 0.3
+      Sustain: 1
+      Release: 0.06
+    Function: 8
+    Volume: 1
   - Osc1Params:
       Shape: 2
     Osc2Params:

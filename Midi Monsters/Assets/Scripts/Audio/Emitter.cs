@@ -9,16 +9,21 @@ public class Emitter : MonoBehaviour
 
     public TH_Audio.MIDISound soundMIDI;
 
-    public float Volume { get; set; }
+    public bool AutoPlay = false;
+    public bool Loop = false;
 
     private void Start()
     {
         soundMIDI = new TH_Audio.MIDISound("Assets\\MIDI\\SFX\\" + Sound.ToString() + ".mid");
         GameAudioInterface.RegisterEmitter(this);
+        if (AutoPlay)
+        {
+            PlaySound();
+        }
     }
 
     public void PlaySound()
     {
-        soundMIDI.Play();
+        soundMIDI.Play(Loop);
     }
 }
