@@ -27010,7 +27010,7 @@ MonoBehaviour:
   isLockedInteractionPrompt: Locked
   isLocked: 0
   doorVisual: {fileID: 1195361756}
-  doorHandle: {fileID: 0}
+  doorHandle: {fileID: 2124272494}
   speed: 1
   m_Open: 0
 --- !u!1 &1197475135
@@ -50776,6 +50776,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122542027}
   m_Mesh: {fileID: 4300000, guid: bbfd397773c9c2e4e8496fb68cb48a49, type: 3}
+--- !u!114 &2124272494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7743083519618826374, guid: 1b82ab8b12dc9614c941f34467a0aa35, type: 3}
+  m_PrefabInstance: {fileID: 1539065669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e66a1582fbce304a851742dcc82e6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2124560907
 PrefabInstance:
   m_ObjectHideFlags: 0
