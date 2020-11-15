@@ -22,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public bool CanProcessInput()
     {
-        return Cursor.lockState == CursorLockMode.Locked;
+        return !m_PlayerCharacterController.isDead && Cursor.lockState == CursorLockMode.Locked;
     }
 
     public Vector3 GetMoveInput()

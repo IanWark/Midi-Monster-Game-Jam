@@ -44,11 +44,14 @@ public class MonsterStateWander : MonoBehaviour
 
     private void GetNewTargetPoint()
     {
-        currentTarget = Monster.GetRandomNavmeshPoint(player.transform.position, wanderPointFromPlayerRadius);
+        if (player != null)
+        {
+            currentTarget = Monster.GetRandomNavmeshPoint(player.transform.position, wanderPointFromPlayerRadius);
 
-        monsterMovement.MoveToPosition(currentTarget, monsterMovement.WalkingSpeed);
+            monsterMovement.MoveToPosition(currentTarget, monsterMovement.WalkingSpeed);
 
-        waitTimer = 0;
-        waitTimeTarget = UnityEngine.Random.Range(minWaitAtPoint, maxWaitAtPoint);
+            waitTimer = 0;
+            waitTimeTarget = UnityEngine.Random.Range(minWaitAtPoint, maxWaitAtPoint);
+        }
     }
 }

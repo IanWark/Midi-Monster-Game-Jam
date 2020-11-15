@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -15,10 +16,13 @@ public class PlayerCharacterController : MonoBehaviour
     public Monster monster;
     [SerializeField]
     private TextMeshProUGUI interactText = null;
+    public Animator fadeOutAnim = null;
 
     [Header("General")]
     [Tooltip("Force applied downward when in the air")]
     public float gravityDownForce = 20f;
+    [Tooltip("Time in seconds before reloading scene")]
+    public float deathDelay = 1;
 
     [Header("Movement")]
     [Tooltip("Max movement speed when not sprinting")]
@@ -63,6 +67,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     public Vector3 characterVelocity { get; set; }
     public bool isCrouching { get; private set; }
+    public bool isDead { get; private set; }
 
     PlayerInputHandler m_InputHandler;
     CharacterController m_Controller;
@@ -301,14 +306,21 @@ public class PlayerCharacterController : MonoBehaviour
     {
         if (other.gameObject.layer == 8) // magic number :(
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
     // fukken die
-    public void Die()
+    public IEnumerator Die()
     {
-        // TODO - do more than abruptly restart
+        // Play death sound and fade out screen
+        FindObjectOfType<GameAudioInterface>().PlayMIDISfx(GameAudioInterface.MIDISfx.PlayerDeath);
+        fadeOutAnim.speed = 1f / deathDelay;
+        fadeOutAnim.SetBool("FadeOut", true);
+
+        isDead = true;
+
+        yield return new WaitForSeconds(deathDelay);
 
         // Reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
