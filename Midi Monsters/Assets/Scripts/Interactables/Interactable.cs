@@ -4,7 +4,7 @@ public abstract class Interactable : MonoBehaviour
 {
     [SerializeField, Tooltip("Text that appears when mousing over interactable.")]
     protected string interactionPrompt = "Interact";
-    public string InteractionPrompt { get { return interactionPrompt; } }
+    public abstract string GetInteractionPrompt();
 
     public abstract bool IsInteractable();
 

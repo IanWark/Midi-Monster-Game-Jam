@@ -303,7 +303,8 @@ MonoBehaviour:
   interactionPrompt: Interact
   isOpenInteractionPrompt: Close
   isClosedInteractionPrompt: Open
-  isLockedInteractionPrompt: Locked
+  isLockedInteractionPrompt: Locked. You need a key!
+  unlockInteractionPrompt: Unlock
   isLocked: 0
   doorVisual: {fileID: 4224273432761164}
   doorHandle: {fileID: 2003332455747998686}

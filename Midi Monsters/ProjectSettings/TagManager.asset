@@ -15,12 +15,12 @@ TagManager:
   - 
   - Monster
   - Door
+  - PlayerCollisionSphere
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - EndGameZone
   - 
   - 
   - 

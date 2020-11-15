@@ -10,7 +10,9 @@ public class Door : Interactable, Lockable
     [SerializeField]
     private string isClosedInteractionPrompt = "Open";
     [SerializeField]
-    private string isLockedInteractionPrompt = "Locked";
+    private string isLockedInteractionPrompt = "Locked. You need a key!";
+    [SerializeField]
+    private string unlockInteractionPrompt = "Unlock";
     [SerializeField]
     private bool isLocked = false;
 
@@ -18,6 +20,7 @@ public class Door : Interactable, Lockable
     public Transform doorVisual;
     [SerializeField]
     public DoorHandle doorHandle;
+    private MonsterManager monsterManager;
 
     private PlayerCharacterController m_PlayerController; // need for keys
     // The target marker.
@@ -33,8 +36,6 @@ public class Door : Interactable, Lockable
     private bool m_Opening = false;
     private bool m_Closing = false;
 
-    List<DoorframeTrigger> doorframeTriggers = new List<DoorframeTrigger>();
-
     //private Vector3 openRotation;
     //private Vector3 closeRotation;
     //private Vector3 close;
@@ -46,14 +47,11 @@ public class Door : Interactable, Lockable
         m_ClosedPosition = doorVisual.rotation;
         m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
 
+        m_PlayerController = FindObjectOfType<PlayerCharacterController>();
+        monsterManager = FindObjectOfType<MonsterManager>();
+
         doorHandle.SetLock(isLocked);
         Open(m_Open);
-        SetInteractionPrompt();
-    }
-
-    public void RegisterDoorframeTrigger(DoorframeTrigger trigger)
-    {
-        doorframeTriggers.Add(trigger);
     }
 
     // Used https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Vector3.RotateTowards.html
@@ -80,7 +78,6 @@ public class Door : Interactable, Lockable
         {
             Unlock();
         }
-        
     }
 
     // Attempt to set m_open to the bool
@@ -89,11 +86,22 @@ public class Door : Interactable, Lockable
         if (!IsLocked())
         {
             m_Open = isOpen;
-            SetInteractionPrompt();
         }
     }
 
-    private void SetInteractionPrompt()
+    // Does it open when interacted with?
+    public bool IsLocked()
+    {
+        return isLocked;
+    }
+
+    // Does it show interaction prompt?
+    public override bool IsInteractable()
+    {
+        return true;
+    }
+
+    public override string GetInteractionPrompt()
     {
         if (!IsLocked())
         {
@@ -109,25 +117,17 @@ public class Door : Interactable, Lockable
         else
         {
             interactionPrompt = isLockedInteractionPrompt;
+            
+            if (m_PlayerController != null)
+            {
+                if (m_PlayerController.keys > 0)
+                {
+                    interactionPrompt = unlockInteractionPrompt;
+                }
+            }
         }
-
-        foreach(DoorframeTrigger trigger in doorframeTriggers)
-        {
-            trigger.SetInteractionPrompt(interactionPrompt);
-        }
-    }
-
-    // Does it open when interacted with?
-    public bool IsLocked()
-
-    {
-        return isLocked;
-    }
-
-    // Does it show interaction prompt?
-    public override bool IsInteractable()
-    {
-        return true;
+        
+        return interactionPrompt;
     }
 
     public bool Unlock()
@@ -136,8 +136,8 @@ public class Door : Interactable, Lockable
         {
             m_PlayerController.UseKey();
             isLocked = false;
-            SetInteractionPrompt();
             doorHandle.SetLock(isLocked);
+            monsterManager.LevelUpMonster();
             return true;
         }
         return false;

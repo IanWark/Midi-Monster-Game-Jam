@@ -26,6 +26,7 @@ public class Readable : Interactable
 
     private PlayerCharacterController m_PlayerController;
     private bool m_isReading { set; get; }
+    public override string GetInteractionPrompt() { return interactionPrompt; }
 
     public void Start()
     {

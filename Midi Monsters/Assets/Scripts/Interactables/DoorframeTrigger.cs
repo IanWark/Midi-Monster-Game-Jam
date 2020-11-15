@@ -7,10 +7,7 @@ public class DoorframeTrigger : Interactable
     [SerializeField]
     private Door parentDoor = null;
 
-    private void Awake()
-    {
-        parentDoor.RegisterDoorframeTrigger(this);
-    }
+    public override string GetInteractionPrompt() { return parentDoor.GetInteractionPrompt(); }
 
     public override bool IsInteractable()
     {
@@ -20,11 +17,6 @@ public class DoorframeTrigger : Interactable
     public override void Interact(PlayerCharacterController pc)
     {
         parentDoor.Interact(pc);
-    }
-
-    public void SetInteractionPrompt(string prompt)
-    {
-        interactionPrompt = prompt;
     }
 
     private void OnTriggerEnter(Collider other)

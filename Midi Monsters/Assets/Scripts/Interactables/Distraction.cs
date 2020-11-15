@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Emitter))]
 public class Distraction : Interactable
 {
+    public override string GetInteractionPrompt() { return interactionPrompt; }
 
     [SerializeField, Tooltip("Amount of time before sound triggers.")]
     private float delay = 5;
