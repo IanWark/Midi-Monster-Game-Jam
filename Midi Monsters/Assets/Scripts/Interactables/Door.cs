@@ -46,6 +46,7 @@ public class Door : Interactable, Lockable
         m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
 
         Open(m_Open);
+        SetInteractionPrompt();
     }
 
     public void RegisterDoorframeTrigger(DoorframeTrigger trigger)
@@ -133,6 +134,7 @@ public class Door : Interactable, Lockable
         {
             m_PlayerController.UseKey();
             isLocked = false;
+            SetInteractionPrompt();
             return true;
         }
         return false;
