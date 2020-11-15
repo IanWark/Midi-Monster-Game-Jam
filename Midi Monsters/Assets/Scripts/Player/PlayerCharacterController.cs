@@ -95,8 +95,8 @@ public class PlayerCharacterController : MonoBehaviour
         UpdateCharacterHeight(true);
 
         // disable interaction prompt until we need it.
-        interactText.text = "press F to interact";
-        interactText.enabled = false;
+        interactText.text = "You aren't supposed to see this text!";
+        interactText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -296,15 +296,15 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void CheckInteraction()
     {
-        interactText.enabled = false;
+        interactText.gameObject.SetActive(false);
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactRange))
         {
             Interactable subject = hit.collider.gameObject.GetComponent<Interactable>();
             if (subject != null && subject.IsInteractable())
             {
+                interactText.gameObject.SetActive(true);
                 interactText.text = subject.InteractionPrompt;
-                interactText.enabled = true;
 
                 if (m_InputHandler.GetInteractDown())
                 {
