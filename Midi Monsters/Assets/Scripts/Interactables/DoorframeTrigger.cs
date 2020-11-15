@@ -17,9 +17,9 @@ public class DoorframeTrigger : Interactable
         return parentDoor.IsInteractable();
     }
 
-    public override void Interact()
+    public override void Interact(PlayerCharacterController pc)
     {
-        parentDoor.Interact();
+        parentDoor.Interact(pc);
     }
 
     public void SetInteractionPrompt(string prompt)
