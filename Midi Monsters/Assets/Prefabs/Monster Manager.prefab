@@ -5131,5 +5131,5 @@ MonoBehaviour:
   lvl3SprintingSpeed: 6
   lvl3WanderPointFromPlayerRadius: 40
   monster: {fileID: 1328701923166597995}
-  monsterMovement: {fileID: 0}
-  monsterStateWander: {fileID: 0}
+  monsterMovement: {fileID: 1328701922757613603}
+  monsterStateWander: {fileID: 6226233832417736822}
