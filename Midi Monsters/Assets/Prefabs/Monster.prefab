@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugPrint: 0
-  hearSoundThreshold: 0.1
-  sprintThreshold: 0.6
+  hearSoundThreshold: 0.2
+  sprintThreshold: 0.7
 --- !u!114 &500797898013786961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   debugPrint: 0
   wanderValue: 0
   investigateValue: 0.33
-  runValue: 0.66
+  runValue: 1
   sprintValue: 1
   playerSeesMonsterMaxAngle: 45
   playerSeesMonsterUseProximity: 1
