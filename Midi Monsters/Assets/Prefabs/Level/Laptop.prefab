@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4282532630173774
 Transform:
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4716504931304240
 Transform:
@@ -233,7 +233,6 @@ MonoBehaviour:
   interactionPrompt: Set 5 sec alarm
   delay: 5
   audible_distance: 200
-  emitter: {fileID: 8424947556682272705}
 --- !u!65 &7524225182069740419
 BoxCollider:
   m_ObjectHideFlags: 0
