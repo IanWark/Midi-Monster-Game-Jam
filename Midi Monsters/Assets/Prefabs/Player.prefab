@@ -316,7 +316,7 @@ MonoBehaviour:
   maxSpeedCrouchedRatio: 0.5
   sprintSpeedModifier: 2
   predictedPositionSeconds: 0
-  interactRange: 4
+  interactRange: 2
   cameraHeightRatio: 0.9
   capsuleHeightStanding: 1.2
   capsuleHeightCrouching: 0.6
