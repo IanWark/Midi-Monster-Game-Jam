@@ -4,7 +4,7 @@ using UnityEngine;
 public class MonsterStateWander : MonoBehaviour
 {
     [SerializeField, Tooltip("Max range from the player we will wander to.")]
-    private float wanderPointFromPlayerRadius = 40f;
+    public float wanderPointFromPlayerRadius = 40f;
 
     [SerializeField, Tooltip("Inclusive min in seconds how long the monster will wait after reaching a wander point.")]
     private float minWaitAtPoint = 0f;

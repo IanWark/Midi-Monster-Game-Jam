@@ -34,10 +34,10 @@ public class Monster : MonoBehaviour
     private bool debugPrint = false;
 
     [SerializeField, Range(0, 1), Tooltip("Threshold a sound must pass to be heard.")]
-    private float hearSoundThreshold = 0.25f;
+    public float hearSoundThreshold = 0.25f;
 
     [SerializeField, Range(0, 1.5f), Tooltip("Threshold a sound must pass for the monster to move at full speed.")]
-    private float sprintThreshold = 0.75f;
+    public float sprintThreshold = 0.75f;
 
     private eMonsterState currentState = eMonsterState.Wander;
     public eMonsterState CurrentState { get { return currentState; } }
