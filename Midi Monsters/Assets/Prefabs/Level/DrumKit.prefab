@@ -476,7 +476,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c43359a92f7955438480427dbbc19b3, type: 2}
+  - {fileID: 2100000, guid: 482fb33d697644248a36e8366013b310, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1005,6 +1005,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4105064904412668}
   - component: {fileID: 6376907761142700250}
+  - component: {fileID: 1226792206869633359}
+  - component: {fileID: 9051688701481494287}
   m_Layer: 0
   m_Name: DrumKit
   m_TagString: Untagged
@@ -1047,3 +1049,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6765078, y: 1.4570522, z: 1.0533366}
   m_Center: {x: 0.15496568, y: 0.50667286, z: 0.06077069}
+--- !u!114 &1226792206869633359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924347927819688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 0
+  AutoPlay: 0
+  Loop: 0
+--- !u!114 &9051688701481494287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924347927819688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2d645c7883f9f4880167686f3dd4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: Hit Cymbal
+  delay: 0
+  audible_distance: 200
+  emitter: {fileID: 1226792206869633359}
