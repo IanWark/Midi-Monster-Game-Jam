@@ -70,13 +70,20 @@ public class Door : Interactable, Lockable
     public override void Interact(PlayerCharacterController pc)
     {
         m_PlayerController = pc;
-        Open(!m_Open);
+        if (!IsLocked()) { 
+            Open(!m_Open);
+        }
+        else
+        {
+            Unlock();
+        }
+        
     }
 
     // Attempt to set m_open to the bool
     public void Open(bool isOpen)
     {
-        if (IsOpenable())
+        if (!IsLocked())
         {
             m_Open = isOpen;
             SetInteractionPrompt();
@@ -85,7 +92,7 @@ public class Door : Interactable, Lockable
 
     private void SetInteractionPrompt()
     {
-        if (IsOpenable())
+        if (!IsLocked())
         {
             if (m_Open)
             {
@@ -108,9 +115,10 @@ public class Door : Interactable, Lockable
     }
 
     // Does it open when interacted with?
-    public bool IsOpenable()
+    public bool IsLocked()
+
     {
-        return !IsLocked();
+        return isLocked;
     }
 
     // Does it show interaction prompt?
@@ -119,15 +127,11 @@ public class Door : Interactable, Lockable
         return true;
     }
 
-    public bool IsLocked()
-    {
-        return isLocked;
-    }
-
     public bool Unlock()
     {
-        if (isLocked)
+        if (isLocked && m_PlayerController.HasKey())
         {
+            m_PlayerController.UseKey();
             isLocked = false;
             return true;
         }

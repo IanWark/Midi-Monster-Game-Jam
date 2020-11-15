@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInputHandler), typeof(AudioSource))]
 public class PlayerCharacterController : MonoBehaviour
@@ -67,10 +69,15 @@ public class PlayerCharacterController : MonoBehaviour
     [Tooltip("AI detection multiplier when talking a sprint step.")]
     public float sprintFootstepDetectionVolume = 4f;
 
+    [Tooltip("Number of keys")]
+    public int keys = 0;
+
     public UnityAction<bool> onStanceChanged;
 
     public Vector3 characterVelocity { get; set; }
+
     public bool isCrouching { get; private set; }
+
     public bool isDead { get; private set; }
 
     PlayerInputHandler m_InputHandler;
@@ -337,4 +344,21 @@ public class PlayerCharacterController : MonoBehaviour
         // Reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    internal void AddKey()
+    {
+        keys++;
+    }
+
+    internal bool HasKey()
+    {
+        return keys > 0;
+    }
+
+    internal void UseKey()
+    {
+        keys--;
+    }
+
+
 }

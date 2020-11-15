@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7317462265607831682}
   - component: {fileID: 7317462265607831683}
   - component: {fileID: 7317462265607831680}
+  - component: {fileID: 496577251874614414}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -915,7 +916,7 @@ MonoBehaviour:
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
-  m_SelectedVertices: 0000000017000000010000001800000002000000160000000300000019000000040000001f0000000500000020000000060000001e00000007000000210000000800000022000000090000001d0000000a0000001a0000000b0000001b0000000c0000001c0000000d000000260000000e000000240000000f000000250000001000000023000000110000002700000012000000280000001300000029000000140000002b000000150000002a000000
+  m_SelectedVertices: 
 --- !u!114 &7317462265607831682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,3 +1005,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7317462265607831686}
   m_Mesh: {fileID: 0}
+--- !u!136 &496577251874614414
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7317462265607831686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.08327818
+  m_Height: 0.007258773
+  m_Direction: 1
+  m_Center: {x: -0.00048720837, y: 0.0005030036, z: -0.02756071}
