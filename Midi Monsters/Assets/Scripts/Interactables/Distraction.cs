@@ -14,14 +14,17 @@ public class Distraction : Interactable
     private float audible_distance;
     public float Audible_Distance { get { return audible_distance; } }
 
-    [SerializeField, Tooltip("Hardcoded reference to the Monster.")]
+    
+    private GameObject monsterObj;
     private Monster monster;
-    public Monster Monster { get { return monster; } }
+    private Monster Monster { get { return monster; } }
 
     private Emitter emitter;
 
     public void Start()
     {
+        monsterObj = GameObject.Find("Monster");
+        monster = monsterObj.GetComponent<Monster>();
         emitter = GetComponent<Emitter>();
 
     }
