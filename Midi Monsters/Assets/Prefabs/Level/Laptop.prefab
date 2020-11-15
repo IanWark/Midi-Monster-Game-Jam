@@ -146,7 +146,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 1a5fbd7eb459dbf48bbd209860052a37, type: 2}
   - {fileID: 2100000, guid: 6c43359a92f7955438480427dbbc19b3, type: 2}
   - {fileID: 2100000, guid: b150018147788534fb0f97115fdbab34, type: 2}
-  - {fileID: 2100000, guid: 72ddb03c5a7a78e48816ec68e9eac314, type: 2}
+  - {fileID: 2100000, guid: 482fb33d697644248a36e8366013b310, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,6 +177,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4948227062254044}
+  - component: {fileID: 8424947556682272705}
+  - component: {fileID: 8344426155845032406}
+  - component: {fileID: 7524225182069740419}
   m_Layer: 0
   m_Name: Laptop
   m_TagString: Untagged
@@ -200,3 +203,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8424947556682272705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953736601779638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 2
+  AutoPlay: 0
+  Loop: 0
+--- !u!114 &8344426155845032406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953736601779638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2d645c7883f9f4880167686f3dd4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: Set 5 sec alarm
+  delay: 5
+  audible_distance: 200
+  emitter: {fileID: 8424947556682272705}
+--- !u!65 &7524225182069740419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953736601779638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.32199597, z: 0.30498084}
+  m_Center: {x: 0, y: 0.17480505, z: -0.00738205}
