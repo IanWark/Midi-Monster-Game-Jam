@@ -42,9 +42,29 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     private MonsterStateWander monsterStateWander;
 
+    private int monsterLevel = 0;
+
     private void Start()
     {
         SpawnMonster();
+    }
+
+    public void LevelUpMonster()
+    {
+        monsterLevel++;
+
+        if (monsterLevel == 1)
+        {
+            SpawnMonster();
+        }
+        else if (monsterLevel == 2)
+        {
+            UpgradeMonsterLevel2();
+        }
+        else if (monsterLevel == 3)
+        {
+            UpgradeMonsterLevel3();
+        }
     }
 
     public void SpawnMonster()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteractableBox : Interactable
 {
+    public override string GetInteractionPrompt() { return interactionPrompt; }
+
     public override bool IsInteractable()
     {
         return true;

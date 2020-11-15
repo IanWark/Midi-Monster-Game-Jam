@@ -311,7 +311,7 @@ public class PlayerCharacterController : MonoBehaviour
             if (subject != null && subject.IsInteractable())
             {
                 interactText.gameObject.SetActive(true);
-                interactText.text = subject.InteractionPrompt;
+                interactText.text = subject.GetInteractionPrompt();
 
                 if (m_InputHandler.GetInteractDown())
                 {
