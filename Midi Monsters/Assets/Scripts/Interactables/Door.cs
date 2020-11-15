@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Door : Interactable
 {
+    [SerializeField]
+    public Transform doorVisual;
 
     // The target marker.
     //[SerializeField, Tooltip("Transform for open position")]
@@ -19,47 +21,55 @@ public class Door : Interactable
     private bool m_Opening = false;
     private bool m_Closing = false;
 
-
+    //private Vector3 openRotation;
+    //private Vector3 closeRotation;
+    //private Vector3 close;
     private Quaternion m_ClosedPosition, m_OpenPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_ClosedPosition = transform.rotation;
-        m_OpenPosition = Quaternion.Euler(-90, -90, 0);
+        m_ClosedPosition = doorVisual.rotation;
+        m_OpenPosition = m_ClosedPosition * Quaternion.Euler(0, 0, -90);
     }
 
     // Used https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Vector3.RotateTowards.html
     void Update()
     {
-        if (IsMoving())
-        {
-            float singleStep = speed * Time.deltaTime;
-            Quaternion newDirection = Quaternion.identity;
+        float singleStep = speed * Time.deltaTime;
+        Quaternion destination = m_Open ? m_OpenPosition : m_ClosedPosition;
+
+        doorVisual.rotation = Quaternion.RotateTowards(doorVisual.rotation, destination, speed);
+
+        //if (IsMoving())
+        //{
+        //    float singleStep = speed * Time.deltaTime;
+        //    Quaternion newDirection = Quaternion.identity;
 
 
-            if (m_Opening)
-            {
-                newDirection = Quaternion.RotateTowards(transform.rotation, m_OpenPosition, speed);
+        //    if (m_Opening)
+        //    {
+        //        newDirection = Quaternion.RotateTowards(transform.rotation, m_OpenPosition, speed);
 
-            }
-            else if (m_Closing)
-            {
-                newDirection = Quaternion.RotateTowards(transform.rotation, m_ClosedPosition, speed);
-            }
+        //    }
+        //    else if (m_Closing)
+        //    {
+        //        newDirection = Quaternion.RotateTowards(transform.rotation, m_ClosedPosition, speed);
+        //    }
 
-            if (newDirection.eulerAngles.magnitude < 0.01)
-            {
-                m_Open = !m_Open;
-                m_Opening = false;
-                m_Closing = false;
-            }
-            // Draw a ray pointing at our target in
-            // Debug.DrawRay(transform.position, newDirection, Color.red);
-            Debug.Log("Door moving.");
-
-            transform.rotation = newDirection;
-        }
+        //    if (transform.rotation != newDirection)
+        //    {
+        //        transform.rotation = newDirection;
+        //        Debug.Log("Moving!");
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Door moving.");
+        //        m_Open = !m_Open;
+        //        m_Opening = false;
+        //        m_Closing = false;
+        //    }
+        //}
     }
 
     public bool IsMoving()
@@ -69,21 +79,23 @@ public class Door : Interactable
 
     public override void Interact()
     {
-        Debug.Log("Door Toggle.");
-        if (m_Open)
-        {
-            m_Closing = true;
+        //Debug.Log("Door Toggle.");
+        //if (m_Open)
+        //{
+        //    m_Closing = true;
 
-        }
-        else
-        {
-            m_Opening = true;
-        }
-        //this.enabled = true;
+        //}
+        //else
+        //{
+        //    m_Opening = true;
+        //}
+        ////this.enabled = true;
+        ///
+        m_Open = !m_Open;
     }
 
     public override bool IsInteractable()
     {
-        return !IsMoving();
+        return true;
     }
 }

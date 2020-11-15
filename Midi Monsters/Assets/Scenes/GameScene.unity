@@ -3520,9 +3520,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1001108895355866, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1562592688063336, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
       propertyPath: m_Name
       value: Door Way (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884897527749602, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4941067342070006, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
       propertyPath: m_RootOrder
@@ -3566,6 +3574,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941067342070006, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 165302461026340096, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12495,7 +12507,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7862
+  m_Name: pb_Mesh-14128
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30550,7 +30562,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1436
+  m_Name: pb_Mesh-7582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31383,7 +31395,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh206872
+  m_Name: pb_Mesh18820
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32455,7 +32467,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7864
+  m_Name: pb_Mesh-14130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33682,7 +33694,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1438
+  m_Name: pb_Mesh-7584
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37317,6 +37329,14 @@ PrefabInstance:
     - target: {fileID: 1562592688063336, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
       propertyPath: m_Name
       value: Door Way (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740967986379710, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740967986379710, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000016605687
       objectReference: {fileID: 0}
     - target: {fileID: 4941067342070006, guid: a0d819a4b975186459b340f324ebc94d, type: 3}
       propertyPath: m_RootOrder
