@@ -17,13 +17,14 @@ public class Readable : Interactable
     public Vector2 m_ScreenPos = Vector2.zero;
 
     private GameObject m_PlayerObj;
-    private GameObject m_ReadableObj;
+    private GameObject m_ReadableObj; // Image on Player's canvas for drawing
     // private Canvas canvas;
     private Image m_Image;
     private Vector3 m_InitialLookDirection = Vector3.zero;
 
     private Camera m_Camera;
 
+    private PlayerCharacterController m_PlayerController;
     private bool m_isReading { set; get; }
 
     public void Start()
@@ -57,8 +58,9 @@ public class Readable : Interactable
     }
     public override bool IsInteractable() { return true;  }
 
-    public override void Interact()
+    public override void Interact(PlayerCharacterController pc)
     {
+        m_PlayerController = pc;
         m_isReading = true;
         m_InitialLookDirection = m_Camera.ScreenPointToRay(Input.mousePosition).direction;
         Rect dimensions = new Rect(m_ScreenPos.x, m_ScreenPos.y, m_DisplayTexture.width, m_DisplayTexture.height);

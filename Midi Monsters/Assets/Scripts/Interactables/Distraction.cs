@@ -31,7 +31,7 @@ public class Distraction : Interactable
         return true;
     }
 
-    public override void Interact()
+    public override void Interact(PlayerCharacterController pc)
     {
         StartCoroutine(TriggerDistraction());
         

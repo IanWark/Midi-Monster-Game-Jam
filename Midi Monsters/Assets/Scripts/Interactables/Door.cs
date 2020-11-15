@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interactable
+public class Door : Interactable, Lockable
 {
     [SerializeField]
     private string isOpenInteractionPrompt = "Close";
@@ -12,8 +12,13 @@ public class Door : Interactable
     [SerializeField]
     private string isLockedInteractionPrompt = "Locked";
     [SerializeField]
+    private bool isLocked = false;
+
+    [SerializeField]
     public Transform doorVisual;
 
+
+    private PlayerCharacterController m_PlayerController; // need for keys
     // The target marker.
     //[SerializeField, Tooltip("Transform for open position")]
     // public Transform m_OpenTransform;
@@ -62,8 +67,9 @@ public class Door : Interactable
         return m_Opening || m_Closing;
     }
 
-    public override void Interact()
+    public override void Interact(PlayerCharacterController pc)
     {
+        m_PlayerController = pc;
         Open(!m_Open);
     }
 
@@ -104,12 +110,27 @@ public class Door : Interactable
     // Does it open when interacted with?
     public bool IsOpenable()
     {
-        return true;
+        return !IsLocked();
     }
 
     // Does it show interaction prompt?
     public override bool IsInteractable()
     {
         return true;
+    }
+
+    public bool IsLocked()
+    {
+        return isLocked;
+    }
+
+    public bool Unlock()
+    {
+        if (isLocked)
+        {
+            isLocked = false;
+            return true;
+        }
+        return false;
     }
 }

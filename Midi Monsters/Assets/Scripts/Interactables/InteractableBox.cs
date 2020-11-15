@@ -9,7 +9,7 @@ public class InteractableBox : Interactable
         return true;
     }
 
-    public override void Interact()
+    public override void Interact(PlayerCharacterController pc)
     {
         Debug.Log("Box has been interacted with.");
     }

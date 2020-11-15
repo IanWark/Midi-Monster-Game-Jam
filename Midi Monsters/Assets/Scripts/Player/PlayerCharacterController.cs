@@ -308,7 +308,7 @@ public class PlayerCharacterController : MonoBehaviour
 
                 if (m_InputHandler.GetInteractDown())
                 {
-                    subject.Interact();
+                    subject.Interact(this);
                 }
             }
         }
