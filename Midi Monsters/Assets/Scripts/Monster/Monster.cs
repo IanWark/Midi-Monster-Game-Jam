@@ -106,16 +106,19 @@ public class Monster : MonoBehaviour
     // When a sound make a noise, it calls this to alert the monster to it
     public void DetectSound(DetectedSound detectedSound)
     {
-        // Sound priority must be above threshold
-        float newSoundPriority = detectedSound.GetPriority(transform.position);
-        if (newSoundPriority > hearSoundThreshold)
+        if (monsterStateGoToSound != null)
         {
-            lastDetectedSound = detectedSound;
-            timeSinceLastSound = 0;
+            // Sound priority must be above threshold
+            float newSoundPriority = detectedSound.GetPriority(transform.position);
+            if (newSoundPriority > hearSoundThreshold)
+            {
+                lastDetectedSound = detectedSound;
+                timeSinceLastSound = 0;
 
-            currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound;
-            monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
-        }        
+                currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound;
+                monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
+            }
+        }
     }
 
     // Returns a random valid point on the navmesh within radius of position
