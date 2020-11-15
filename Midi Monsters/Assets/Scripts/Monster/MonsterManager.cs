@@ -44,11 +44,6 @@ public class MonsterManager : MonoBehaviour
 
     private int monsterLevel = 0;
 
-    private void Start()
-    {
-        SpawnMonster();
-    }
-
     public void LevelUpMonster()
     {
         monsterLevel++;
