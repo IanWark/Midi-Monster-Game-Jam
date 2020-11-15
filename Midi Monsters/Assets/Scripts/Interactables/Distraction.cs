@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Emitter))]
 public class Distraction : Interactable
 {
 
@@ -16,7 +17,14 @@ public class Distraction : Interactable
     [SerializeField, Tooltip("Hardcoded reference to the Monster.")]
     private Monster monster;
     public Monster Monster { get { return monster; } }
-    
+
+    private Emitter emitter;
+
+    public void Start()
+    {
+        emitter = GetComponent<Emitter>();
+
+    }
 
     public override bool IsInteractable()
     {
@@ -40,6 +48,9 @@ public class Distraction : Interactable
         // check distance from self to monster
         float dist = Vector3.Distance(transform.position, Monster.transform.position);
         // notify monster if close enough to hear
+
+        emitter.PlaySound();
+
         if (dist < audible_distance)
         {
             monster.DetectSound(new Monster.DetectedSound(transform.position, transform.position, 1)); // predicted == current for now

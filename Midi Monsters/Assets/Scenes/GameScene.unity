@@ -30849,6 +30849,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4273eb0be4441244886aa767769d25e3, type: 3}
+--- !u!1 &1235375550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1259781562285434, guid: feca56ed5a46b9e44b04b3beeadc2df0, type: 3}
+  m_PrefabInstance: {fileID: 1845155997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235375551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235375550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 1
+--- !u!114 &1235375552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235375550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2d645c7883f9f4880167686f3dd4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: Interact
+  delay: 0
+  audible_distance: 200
+  monster: {fileID: 805721225}
 --- !u!1001 &1235383122
 PrefabInstance:
   m_ObjectHideFlags: 0
