@@ -20,6 +20,7 @@ public class GameAudioInterface : MonoBehaviour
         PlayerDeath,
         MonsterFootstep,
         PlayerFootstep,
+        Piano2,
         COUNT
     }
 
