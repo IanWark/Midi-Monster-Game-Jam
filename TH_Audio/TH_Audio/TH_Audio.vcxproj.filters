@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Audio">
+      <UniqueIdentifier>{7d68b3a8-7e16-440f-8287-598adc72cb88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Audio\Effects">
+      <UniqueIdentifier>{11dd8d02-ce5c-47ac-8791-51f463d6ff2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Memory">
+      <UniqueIdentifier>{76f7d7c6-2509-432d-b9d9-2cacfca91106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameUtil">
+      <UniqueIdentifier>{e6a59406-560c-45ba-9777-5695771d6256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{83f2fdea-3bdd-4af8-8d72-3ae80a35e6ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="th_audio.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\ADSREnvelope.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\audioManager.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\midi.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\oscillator.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\sound.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\voice.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\effects\delay.h">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\effects\effectChain.h">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\effects\iEffect.h">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\effects\lowPass.h">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtil\debugConsole.h">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtil\file.h">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\memory.h">
+      <Filter>Source Files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="th_audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\ADSREnvelope.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\audioManager.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\midi.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\oscillator.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\sound.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\voice.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\effects\delay.cpp">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\effects\effectChain.cpp">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\effects\lowPass.cpp">
+      <Filter>Source Files\Audio\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtil\debugConsole_win32.cpp">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtil\file.cpp">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\memory.cpp">
+      <Filter>Source Files\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
