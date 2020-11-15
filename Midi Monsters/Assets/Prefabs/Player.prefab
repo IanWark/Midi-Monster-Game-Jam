@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 2254227859900582608}
   - component: {fileID: 2470272465995357723}
   - component: {fileID: 2254227859900582611}
+  - component: {fileID: 5609418782277975286}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -304,7 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2254227861062573394}
-  audioSource: {fileID: 2254227859900582611}
   monster: {fileID: 0}
   interactText: {fileID: 2254227859758985031}
   fadeOutAnim: {fileID: 8651812130018598056}
@@ -320,8 +320,11 @@ MonoBehaviour:
   capsuleHeightStanding: 1.2
   capsuleHeightCrouching: 0.6
   crouchingSharpness: 10
-  footstepSFXFrequency: 0.25
-  footstepSFXFrequencyWhileSprinting: 0.25
+  footstepSFXFrequency: 0.5
+  footstepSFXFrequencyWhileSprinting: 0.5
+  crouchFootstepAudioVolume: 0.33
+  normalFootstepAudioVolume: 0.66
+  sprintFootstepAudioVolume: 1
   crouchFootstepDetectionVolume: 1
   normalFootstepDetectionVolume: 2
   sprintFootstepDetectionVolume: 4
@@ -470,6 +473,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5609418782277975286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2254227859900582607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0a3c69e7ab1304d92e83a6d2c703f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 6
+  AutoPlay: 0
+  Loop: 0
 --- !u!1 &2254227861062573392
 GameObject:
   m_ObjectHideFlags: 0

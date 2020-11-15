@@ -10,12 +10,10 @@ public class PlayerCharacterController : MonoBehaviour
     [Header("References")]
     [Tooltip("Reference to the main camera used for the player")]
     public Camera playerCamera;
-    [Tooltip("Audio source for footsteps, etc...")]
-    public AudioSource audioSource;
     [Tooltip("You can't run and you can't hide...")]
     public Monster monster;
     [SerializeField]
-    private TextMeshProUGUI interactText = null;
+    private TextMeshProUGUI interactText = null;    
     public Animator fadeOutAnim = null;
 
     [Header("General")]
@@ -56,11 +54,17 @@ public class PlayerCharacterController : MonoBehaviour
     public float footstepSFXFrequency = 1f;
     [Tooltip("Amount of footstep sounds played when moving one meter while sprinting")]
     public float footstepSFXFrequencyWhileSprinting = 1f;
-    [Tooltip("Volume when talking a crouched step for the purposes of AI detection.")]
+    [Range(0,1), Tooltip("Volume to play volume when talking a crouched step.")]
+    public float crouchFootstepAudioVolume = 0.33f;
+    [Range(0, 1), Tooltip("Volume to play volume when talking a normal step.")]
+    public float normalFootstepAudioVolume = 0.66f;
+    [Range(0, 1), Tooltip("Volume to play volume when talking a sprint step.")]
+    public float sprintFootstepAudioVolume = 1f;
+    [Tooltip("AI detection multiplier when talking a crouched step.")]
     public float crouchFootstepDetectionVolume = 1f;
-    [Tooltip("Volume when talking a normal step for the purposes of AI detection.")]
+    [Tooltip("AI detection multiplier when talking a normal step.")]
     public float normalFootstepDetectionVolume = 2f;
-    [Tooltip("Volume when talking a sprint step for the purposes of AI detection.")]
+    [Tooltip("AI detection multiplier when talking a sprint step.")]
     public float sprintFootstepDetectionVolume = 4f;
 
     public UnityAction<bool> onStanceChanged;
@@ -72,6 +76,7 @@ public class PlayerCharacterController : MonoBehaviour
     PlayerInputHandler m_InputHandler;
     CharacterController m_Controller;
     Vector3 m_CharacterVelocity;
+    private PlayerFootstepEmitter playerFootstepEmitter = null;
     float m_CameraVerticalAngle = 0f;
     float m_footstepDistanceCounter;
     float m_TargetCharacterHeight;
@@ -81,6 +86,7 @@ public class PlayerCharacterController : MonoBehaviour
         // fetch components on the same gameObject
         m_Controller = GetComponent<CharacterController>();
         m_InputHandler = GetComponent<PlayerInputHandler>();
+        playerFootstepEmitter = GetComponent<PlayerFootstepEmitter>();
 
         m_Controller.enableOverlapRecovery = true;
 
@@ -170,7 +176,8 @@ public class PlayerCharacterController : MonoBehaviour
             }
 
             // keep track of distance traveled for footsteps sound
-            m_footstepDistanceCounter += characterVelocity.magnitude * Time.deltaTime;
+            Vector3 noY = new Vector3(characterVelocity.x, 0, characterVelocity.z);
+            m_footstepDistanceCounter += noY.magnitude * Time.deltaTime;
 
             // apply the gravity to the velocity
             characterVelocity += Vector3.down * gravityDownForce * Time.deltaTime;
@@ -190,15 +197,20 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void PlayFootstep(bool isSprinting)
     {
+        float audioVolume = normalFootstepAudioVolume;
         float detectionVolume = normalFootstepDetectionVolume;
         if (isSprinting)
         {
+            audioVolume = sprintFootstepAudioVolume;
             detectionVolume = sprintFootstepDetectionVolume;
         }
         else if (isCrouching)
         {
+            audioVolume = crouchFootstepAudioVolume;
             detectionVolume = crouchFootstepDetectionVolume;
         }
+        
+        playerFootstepEmitter.PlayFootstep(audioVolume);
 
         // send sound event to monster
         Vector3 predictedPosition = transform.position + (characterVelocity * predictedPositionSeconds); // Where are we estimated to be predictedPositionSeconds later?

@@ -5,8 +5,6 @@ using UnityEngine;
 public class GameAudioInterface : MonoBehaviour
 {
     private TH_Audio.MIDISound layeredMusic;
-    private TH_Audio.MIDISound playerFootstep;
-    private TH_Audio.MIDISound monsterFootstep;
 
     public static GameAudioInterface Instance; // Lol
 
@@ -21,6 +19,7 @@ public class GameAudioInterface : MonoBehaviour
         CoffeePot,
         PlayerDeath,
         MonsterFootstep,
+        PlayerFootstep,
         COUNT
     }
 
@@ -45,14 +44,6 @@ public class GameAudioInterface : MonoBehaviour
         layeredMusic = new TH_Audio.MIDISound("Assets\\MIDI\\LayeredBGM.mid");
         layeredMusic.Play(true);
 
-        playerFootstep = new TH_Audio.MIDISound("Assets\\MIDI\\step.mid");
-        playerFootstep.SetVolume(0);
-        playerFootstep.Play(true);
-
-        monsterFootstep = new TH_Audio.MIDISound("Assets\\MIDI\\step.mid");
-        monsterFootstep.SetVolume(0);
-        monsterFootstep.Play(true);
-
         for (MIDISfx i = 0; i < MIDISfx.COUNT; i++)
         {
             soundLibrary[i] = new TH_Audio.MIDISound("Assets\\MIDI\\SFX\\" + i.ToString() + ".mid");
@@ -76,12 +67,6 @@ public class GameAudioInterface : MonoBehaviour
         layeredMusic.SetBPM(140 + (update.Proximity * 600));
     }
 
-    public void UpdatePlayerFootstep(float stepVolume, float stepSpeed)
-    {
-        playerFootstep.SetBPM(stepSpeed);
-        playerFootstep.SetVolume(stepVolume);
-    }
-
     public void PlayMIDISfx(MIDISfx effect)
     {
         soundLibrary[effect].Play();
@@ -96,15 +81,6 @@ public class GameAudioInterface : MonoBehaviour
                 float distance = Vector3.Distance(player.transform.position, emitter.transform.position);
                 distance =  Mathf.Clamp01((20.0f - distance)/20.0f); // Lol hack
                 emitter.soundMIDI.SetVolume(distance);
-            }
-            
-            if (Mathf.Abs(player.characterVelocity.x) < 0.5f && Mathf.Abs(player.characterVelocity.z) < 0.5f)
-            {
-                UpdatePlayerFootstep(0, 200);
-            }
-            else 
-            {
-                UpdatePlayerFootstep(1, 200);
             }
         }        
     }
