@@ -131,7 +131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328701922757613600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9325571, y: -26.36131, z: -30.654356}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1328701921270647347}
@@ -227,7 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8772fbbc8f8354ebc6e05e380cdcc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderPointFromPlayerRadius: 30
+  wanderPointCenter: {fileID: 0}
+  wanderPointRadius: 40
   minWaitAtPoint: 2
   maxWaitAtPoint: 2
 --- !u!114 &8988086308270190542
@@ -274,9 +275,9 @@ MonoBehaviour:
   AutoPlay: 0
   Loop: 0
   movement: {fileID: 1328701922757613603}
+  timeBetweenSteps: 1
   particles: {fileID: 1478111221145609344}
   StepSpeedScaler: 30
-  timeUntilNextStep: 0
 --- !u!54 &8602502805363960625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5165,7 +5166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478111222052246292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.998557, y: 26.36131, z: 16.491356}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1328701922757613613}
@@ -5220,13 +5221,20 @@ MonoBehaviour:
   - 5
   - 5
   - 5
-  wanderPointFromPlayerRadii:
-  - 30
-  - 30
-  - 30
-  - 30
-  - 30
-  - 30
+  wanderPointRadii:
+  - 40
+  - 40
+  - 40
+  - 40
+  - 40
+  - 40
+  wanderPointCenters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   investigateRadii:
   - 5
   - 5

@@ -25,7 +25,7 @@ public class MonsterMovement : MonoBehaviour
     public float GetAgentSpeed() { return navMeshAgent.speed; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }

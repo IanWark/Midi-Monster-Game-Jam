@@ -17,20 +17,22 @@ public class MonsterManager : MonoBehaviour
     private List<float> runningSpeeds = null;
     [SerializeField, Tooltip("Full speed we move when going to a loud sound.")]
     private List<float> sprintingSpeeds = null;
-    [SerializeField, Tooltip("Max range from the player we will wander to.")]
-    private List<float> wanderPointFromPlayerRadii = null;
+    [SerializeField, Tooltip("Max range from the wanderPointCenter we will wander to.")]
+    private List<float> wanderPointRadii = null;
+    [SerializeField, Tooltip("Point that we wander around. Can be the player.")]
+    private List<Transform> wanderPointCenters = null;
     [SerializeField, Tooltip("How far away from the last sound we heard we will search.")]
     private List<float> investigateRadii = null;
 
     [Header("References")]
     [SerializeField]
-    private Monster monster;
+    private Monster monster = null;
     [SerializeField]
-    private MonsterMovement monsterMovement;
+    private MonsterMovement monsterMovement = null;
     [SerializeField]
-    private MonsterStateWander monsterStateWander;
+    private MonsterStateWander monsterStateWander = null;
     [SerializeField]
-    private MonsterStateInvestigate monsterStateInvestigate;
+    private MonsterStateInvestigate monsterStateInvestigate = null;
 
     [SerializeField]
     private int monsterLevel = -1;
@@ -74,11 +76,13 @@ public class MonsterManager : MonoBehaviour
         monsterMovement.walkingSpeed = ValueFromList(monsterMovement.walkingSpeed, newLevel, walkingSpeeds);
         monsterMovement.runningSpeed = ValueFromList(monsterMovement.runningSpeed, newLevel, runningSpeeds);
         monsterMovement.sprintingSpeed = ValueFromList(monsterMovement.sprintingSpeed, newLevel, sprintingSpeeds);
-        monsterStateWander.wanderPointFromPlayerRadius = ValueFromList(monsterStateWander.wanderPointFromPlayerRadius, newLevel, wanderPointFromPlayerRadii);
+        monsterStateWander.wanderPointRadius = ValueFromList(monsterStateWander.wanderPointRadius, newLevel, wanderPointRadii);
+        monsterStateWander.wanderPointCenter = ValueFromList(monsterStateWander.wanderPointCenter, newLevel, wanderPointCenters);
         monsterStateInvestigate.investigateRadius = ValueFromList(monsterStateInvestigate.investigateRadius, newLevel, investigateRadii);
     }
 
-    public float ValueFromList(float defaultValue, int newLevel, List<float> list)
+    // Get list[newLevel]. If we cannot, return defaultValue
+    public T ValueFromList<T>(T defaultValue, int newLevel, List<T> list)
     {
         if (list != null && list.Count > newLevel)
         {
