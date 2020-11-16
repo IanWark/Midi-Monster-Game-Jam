@@ -149,7 +149,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.3
   m_Speed: 3.5
-  m_Acceleration: 10
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360
   m_StoppingDistance: 0.5
@@ -5186,7 +5186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnMonsterDelay: 5
   hearSoundThresholds:
-  - 0
+  - 1
   - 0.2
   - 0.2
   - 0.2
@@ -5227,6 +5227,15 @@ MonoBehaviour:
   - 30
   - 30
   - 30
+  investigateRadii:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
   monster: {fileID: 1328701923166597995}
   monsterMovement: {fileID: 1328701922757613603}
   monsterStateWander: {fileID: 6226233832417736822}
+  monsterStateInvestigate: {fileID: 8988086308270190542}
+  monsterLevel: -1

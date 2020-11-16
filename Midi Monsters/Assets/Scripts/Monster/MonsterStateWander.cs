@@ -48,6 +48,12 @@ public class MonsterStateWander : MonoBehaviour
         {
             currentTarget = Monster.GetRandomNavmeshPoint(player.transform.position, wanderPointFromPlayerRadius);
 
+            while (!monsterMovement.CanReachPosition(currentTarget))
+            {
+                Debug.Log("Can't reach position!");
+                currentTarget = Monster.GetRandomNavmeshPoint(player.transform.position, wanderPointFromPlayerRadius);
+            }
+
             monsterMovement.MoveToPosition(currentTarget, monsterMovement.WalkingSpeed);
 
             waitTimer = 0;

@@ -12,7 +12,7 @@ public class MonsterStateInvestigate : MonoBehaviour
     private float maxWaitAtPoint = 1f;
 
     [SerializeField, Tooltip("How far away from the last sound we heard we will search.")]
-    private float investigateRadius = 10f;
+    public float investigateRadius = 10f;
 
     [SerializeField, Tooltip("How many random points we will search.")]
     private int investigatePoints = 3;

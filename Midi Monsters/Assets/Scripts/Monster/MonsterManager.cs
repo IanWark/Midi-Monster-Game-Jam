@@ -19,6 +19,8 @@ public class MonsterManager : MonoBehaviour
     private List<float> sprintingSpeeds = null;
     [SerializeField, Tooltip("Max range from the player we will wander to.")]
     private List<float> wanderPointFromPlayerRadii = null;
+    [SerializeField, Tooltip("How far away from the last sound we heard we will search.")]
+    private List<float> investigateRadii = null;
 
     [Header("References")]
     [SerializeField]
@@ -27,8 +29,16 @@ public class MonsterManager : MonoBehaviour
     private MonsterMovement monsterMovement;
     [SerializeField]
     private MonsterStateWander monsterStateWander;
+    [SerializeField]
+    private MonsterStateInvestigate monsterStateInvestigate;
 
-    private int monsterLevel = 0;
+    [SerializeField]
+    private int monsterLevel = -1;
+
+    private void Start()
+    {
+        LevelUpMonster();
+    }
 
     public void LevelUpMonster()
     {
@@ -65,6 +75,7 @@ public class MonsterManager : MonoBehaviour
         monsterMovement.runningSpeed = ValueFromList(monsterMovement.runningSpeed, newLevel, runningSpeeds);
         monsterMovement.sprintingSpeed = ValueFromList(monsterMovement.sprintingSpeed, newLevel, sprintingSpeeds);
         monsterStateWander.wanderPointFromPlayerRadius = ValueFromList(monsterStateWander.wanderPointFromPlayerRadius, newLevel, wanderPointFromPlayerRadii);
+        monsterStateInvestigate.investigateRadius = ValueFromList(monsterStateInvestigate.investigateRadius, newLevel, investigateRadii);
     }
 
     public float ValueFromList(float defaultValue, int newLevel, List<float> list)

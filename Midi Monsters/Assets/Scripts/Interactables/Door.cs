@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : Interactable, Lockable
 {
@@ -17,10 +18,10 @@ public class Door : Interactable, Lockable
     private bool isLocked = false;
 
     [SerializeField]
-    public Transform doorVisual;
-    [SerializeField]
-    public DoorHandle doorHandle;
+    private Transform doorVisual;
+    private DoorHandle doorHandle;
     private MonsterManager monsterManager;
+    private NavMeshObstacle navObstacle;
 
     private PlayerCharacterController m_PlayerController; // need for keys
     // The target marker.
@@ -49,8 +50,11 @@ public class Door : Interactable, Lockable
 
         m_PlayerController = FindObjectOfType<PlayerCharacterController>();
         monsterManager = FindObjectOfType<MonsterManager>();
+        doorHandle = GetComponentInChildren<DoorHandle>();
+        navObstacle = GetComponent<NavMeshObstacle>();
 
         doorHandle.SetLock(isLocked);
+        navObstacle.enabled = isLocked;
         Open(m_Open);
     }
 
@@ -136,6 +140,7 @@ public class Door : Interactable, Lockable
         {
             m_PlayerController.UseKey();
             isLocked = false;
+            navObstacle.enabled = isLocked;
             doorHandle.SetLock(isLocked);
             monsterManager.LevelUpMonster();
             return true;

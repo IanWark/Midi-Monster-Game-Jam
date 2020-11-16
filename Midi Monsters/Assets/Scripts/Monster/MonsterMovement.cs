@@ -42,4 +42,11 @@ public class MonsterMovement : MonoBehaviour
     {
         return !navMeshAgent.pathPending && navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance;
     }
+
+    public bool CanReachPosition(Vector3 position)
+    {
+        NavMeshPath path = new NavMeshPath();
+        navMeshAgent.CalculatePath(position, path);
+        return path.status == NavMeshPathStatus.PathComplete;
+    }
 }

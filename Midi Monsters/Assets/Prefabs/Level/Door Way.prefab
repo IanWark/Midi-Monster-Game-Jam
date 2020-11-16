@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 33452882059857328}
   - component: {fileID: 23331677224541164}
   - component: {fileID: 5804835403065911136}
+  - component: {fileID: 2440907218814678164}
   m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
@@ -307,7 +308,6 @@ MonoBehaviour:
   unlockInteractionPrompt: Unlock
   isLocked: 0
   doorVisual: {fileID: 4224273432761164}
-  doorHandle: {fileID: 2003332455747998686}
   speed: 1
   m_Open: 0
 --- !u!33 &33452882059857328
@@ -373,6 +373,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0019999999, y: 0.0024000006, z: 0.0020000006}
   m_Center: {x: -0.0009302325, y: 0, z: 0}
+--- !u!208 &2440907218814678164
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884897527749602}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.001, y: 0.0012000005, z: 0.0010000005}
+  m_MoveThreshold: 1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.0009302325, y: 0, z: 0}
+  m_TimeToStationary: 0
 --- !u!1 &122348414444696800
 GameObject:
   m_ObjectHideFlags: 0
