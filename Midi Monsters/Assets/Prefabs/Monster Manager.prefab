@@ -5220,7 +5220,7 @@ MonoBehaviour:
   - 5
   - 5
   - 5
-  wanderPointFromPlayerRadius:
+  wanderPointFromPlayerRadii:
   - 30
   - 30
   - 30

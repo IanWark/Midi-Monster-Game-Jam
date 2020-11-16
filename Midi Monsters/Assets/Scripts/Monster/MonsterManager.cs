@@ -18,7 +18,7 @@ public class MonsterManager : MonoBehaviour
     [SerializeField, Tooltip("Full speed we move when going to a loud sound.")]
     private List<float> sprintingSpeeds = null;
     [SerializeField, Tooltip("Max range from the player we will wander to.")]
-    private List<float> wanderPointFromPlayerRadius = null;
+    private List<float> wanderPointFromPlayerRadii = null;
 
     [Header("References")]
     [SerializeField]
@@ -60,11 +60,11 @@ public class MonsterManager : MonoBehaviour
     public void UpgradeMonster(int newLevel)
     {
         monster.hearSoundThreshold = ValueFromList(monster.hearSoundThreshold, newLevel, hearSoundThresholds);
-        monster.sprintThreshold = ValueFromList(monster.sprintThreshold, newLevel, hearSoundThresholds);
-        monsterMovement.walkingSpeed = ValueFromList(monsterMovement.walkingSpeed, newLevel, hearSoundThresholds);
-        monsterMovement.runningSpeed = ValueFromList(monsterMovement.runningSpeed, newLevel, hearSoundThresholds);
-        monsterMovement.sprintingSpeed = ValueFromList(monsterMovement.sprintingSpeed, newLevel, hearSoundThresholds);
-        monsterStateWander.wanderPointFromPlayerRadius = ValueFromList(monsterStateWander.wanderPointFromPlayerRadius, newLevel, hearSoundThresholds);
+        monster.sprintThreshold = ValueFromList(monster.sprintThreshold, newLevel, sprintThresholds);
+        monsterMovement.walkingSpeed = ValueFromList(monsterMovement.walkingSpeed, newLevel, walkingSpeeds);
+        monsterMovement.runningSpeed = ValueFromList(monsterMovement.runningSpeed, newLevel, runningSpeeds);
+        monsterMovement.sprintingSpeed = ValueFromList(monsterMovement.sprintingSpeed, newLevel, sprintingSpeeds);
+        monsterStateWander.wanderPointFromPlayerRadius = ValueFromList(monsterStateWander.wanderPointFromPlayerRadius, newLevel, wanderPointFromPlayerRadii);
     }
 
     public float ValueFromList(float defaultValue, int newLevel, List<float> list)
