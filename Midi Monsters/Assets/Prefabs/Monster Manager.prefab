@@ -5185,18 +5185,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnMonsterDelay: 5
-  lvl2HearSoundThreshold: 0.25
-  lvl2SprintThreshold: 0.75
-  lvl2WalkingSpeed: 2
-  lvl2RunningSpeed: 4
-  lvl2SprintingSpeed: 6
-  lvl2WanderPointFromPlayerRadius: 40
-  lvl3HearSoundThreshold: 0.25
-  lvl3SprintThreshold: 0.75
-  lvl3WalkingSpeed: 2
-  lvl3RunningSpeed: 4
-  lvl3SprintingSpeed: 6
-  lvl3WanderPointFromPlayerRadius: 40
+  hearSoundThresholds:
+  - 0
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  sprintThresholds:
+  - 0.7
+  - 0.7
+  - 0.7
+  - 0.7
+  - 0.7
+  - 0.7
+  walkingSpeeds:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  runningSpeeds:
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  sprintingSpeeds:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  wanderPointFromPlayerRadius:
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
   monster: {fileID: 1328701923166597995}
   monsterMovement: {fileID: 1328701922757613603}
   monsterStateWander: {fileID: 6226233832417736822}

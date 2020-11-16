@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
@@ -6,33 +7,18 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     private float spawnMonsterDelay = 5;
 
-    [Header("Upgrade Monster Level 2")]
-    [SerializeField, Range(0, 1), Tooltip("Threshold a sound must pass to be heard.")]
-    private float lvl2HearSoundThreshold = 0.25f;
-    [SerializeField, Range(0, 1.5f), Tooltip("Threshold a sound must pass for the monster to move at full speed.")]
-    private float lvl2SprintThreshold = 0.75f;
-    [SerializeField]
-    private float lvl2WalkingSpeed = 2f;
-    [SerializeField]
-    private float lvl2RunningSpeed = 4f;
-    [SerializeField]
-    private float lvl2SprintingSpeed = 6f;
+    [SerializeField, Tooltip("Threshold a sound must pass to be heard, 0 to 1.")]
+    private List<float> hearSoundThresholds = null;
+    [SerializeField, Tooltip("Threshold a sound must pass for the monster to move at full speed, 0 to 1.")]
+    private List<float> sprintThresholds = null;
+    [SerializeField, Tooltip("Speed we move when walking.")]
+    private List<float> walkingSpeeds = null;
+    [SerializeField, Tooltip("Normal speed we move when going to a sound.")]
+    private List<float> runningSpeeds = null;
+    [SerializeField, Tooltip("Full speed we move when going to a loud sound.")]
+    private List<float> sprintingSpeeds = null;
     [SerializeField, Tooltip("Max range from the player we will wander to.")]
-    private float lvl2WanderPointFromPlayerRadius = 40f;
-
-    [Header("Upgrade Monster Level 3")]
-    [SerializeField, Range(0, 1), Tooltip("Threshold a sound must pass to be heard.")]
-    private float lvl3HearSoundThreshold = 0.25f;
-    [SerializeField, Range(0, 1.5f), Tooltip("Threshold a sound must pass for the monster to move at full speed.")]
-    private float lvl3SprintThreshold = 0.75f;
-    [SerializeField]
-    private float lvl3WalkingSpeed = 2f;
-    [SerializeField]
-    private float lvl3RunningSpeed = 4f;
-    [SerializeField]
-    private float lvl3SprintingSpeed = 6f;
-    [SerializeField, Tooltip("Max range from the player we will wander to.")]
-    private float lvl3WanderPointFromPlayerRadius = 40f;
+    private List<float> wanderPointFromPlayerRadius = null;
 
     [Header("References")]
     [SerializeField]
@@ -52,13 +38,10 @@ public class MonsterManager : MonoBehaviour
         {
             SpawnMonster();
         }
-        else if (monsterLevel == 2)
+
+        if (monsterLevel >= 1)
         {
-            UpgradeMonsterLevel2();
-        }
-        else if (monsterLevel == 3)
-        {
-            UpgradeMonsterLevel3();
+            UpgradeMonster(monsterLevel - 1);
         }
     }
 
@@ -74,23 +57,24 @@ public class MonsterManager : MonoBehaviour
         monster.gameObject.SetActive(true);
     }
 
-    public void UpgradeMonsterLevel2()
+    public void UpgradeMonster(int newLevel)
     {
-        monster.hearSoundThreshold = lvl2HearSoundThreshold;
-        monster.sprintThreshold = lvl2SprintThreshold;
-        monsterMovement.walkingSpeed = lvl2WalkingSpeed;
-        monsterMovement.runningSpeed = lvl2RunningSpeed;
-        monsterMovement.sprintingSpeed = lvl2SprintingSpeed;
-        monsterStateWander.wanderPointFromPlayerRadius = lvl2WanderPointFromPlayerRadius;
+        monster.hearSoundThreshold = ValueFromList(monster.hearSoundThreshold, newLevel, hearSoundThresholds);
+        monster.sprintThreshold = ValueFromList(monster.sprintThreshold, newLevel, hearSoundThresholds);
+        monsterMovement.walkingSpeed = ValueFromList(monsterMovement.walkingSpeed, newLevel, hearSoundThresholds);
+        monsterMovement.runningSpeed = ValueFromList(monsterMovement.runningSpeed, newLevel, hearSoundThresholds);
+        monsterMovement.sprintingSpeed = ValueFromList(monsterMovement.sprintingSpeed, newLevel, hearSoundThresholds);
+        monsterStateWander.wanderPointFromPlayerRadius = ValueFromList(monsterStateWander.wanderPointFromPlayerRadius, newLevel, hearSoundThresholds);
     }
 
-    public void UpgradeMonsterLevel3()
+    public float ValueFromList(float defaultValue, int newLevel, List<float> list)
     {
-        monster.hearSoundThreshold = lvl3HearSoundThreshold;
-        monster.sprintThreshold = lvl3SprintThreshold;
-        monsterMovement.walkingSpeed = lvl3WalkingSpeed;
-        monsterMovement.runningSpeed = lvl3RunningSpeed;
-        monsterMovement.sprintingSpeed = lvl3SprintingSpeed;
-        monsterStateWander.wanderPointFromPlayerRadius = lvl3WanderPointFromPlayerRadius;
+        if (list != null && list.Count > newLevel)
+        {
+            return list[newLevel];
+        }
+
+        Debug.Assert(false, "MonsterManager - Cannot get value from list, using default value.");
+        return defaultValue;
     }
 }
