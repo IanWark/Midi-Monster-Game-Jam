@@ -24,9 +24,6 @@ public class Door : Interactable, Lockable
     private NavMeshObstacle navObstacle;
 
     private PlayerCharacterController m_PlayerController; // need for keys
-    // The target marker.
-    //[SerializeField, Tooltip("Transform for open position")]
-    // public Transform m_OpenTransform;
 
     // Angular speed in radians per sec.
     public float speed = 100f;
@@ -36,10 +33,7 @@ public class Door : Interactable, Lockable
 
     private bool m_Opening = false;
     private bool m_Closing = false;
-
-    //private Vector3 openRotation;
-    //private Vector3 closeRotation;
-    //private Vector3 close;
+    
     private Quaternion m_ClosedPosition, m_OpenPosition;
 
     // Start is called before the first frame update
@@ -61,10 +55,10 @@ public class Door : Interactable, Lockable
     // Used https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Vector3.RotateTowards.html
     void Update()
     {
-        float singleStep = speed * Time.deltaTime;
+        float singleStep = 90 * speed * Time.deltaTime;
         Quaternion destination = m_Open ? m_OpenPosition : m_ClosedPosition;
 
-        doorVisual.rotation = Quaternion.RotateTowards(doorVisual.rotation, destination, speed);
+        doorVisual.rotation = Quaternion.RotateTowards(doorVisual.rotation, destination, singleStep);
     }
 
     public bool IsMoving()
@@ -74,7 +68,6 @@ public class Door : Interactable, Lockable
 
     public override void Interact(PlayerCharacterController pc)
     {
-        m_PlayerController = pc;
         if (!IsLocked()) { 
             Open(!m_Open);
         }
@@ -93,7 +86,7 @@ public class Door : Interactable, Lockable
         }
     }
 
-    // Does it open when interacted with?
+    // Does it not open when interacted with?
     public bool IsLocked()
     {
         return isLocked;

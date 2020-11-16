@@ -308,7 +308,7 @@ MonoBehaviour:
   unlockInteractionPrompt: Unlock
   isLocked: 0
   doorVisual: {fileID: 4224273432761164}
-  speed: 1
+  speed: 1.5
   m_Open: 0
 --- !u!33 &33452882059857328
 MeshFilter:
