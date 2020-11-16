@@ -16,6 +16,8 @@ public class Door : Interactable, Lockable
     private string unlockInteractionPrompt = "Unlock";
     [SerializeField]
     private bool isLocked = false;
+    [SerializeField]
+    private Key.KeyType keyType = Key.KeyType.Normal;
 
     [SerializeField]
     private Transform doorVisual;
@@ -117,7 +119,7 @@ public class Door : Interactable, Lockable
             
             if (m_PlayerController != null)
             {
-                if (m_PlayerController.keys > 0)
+                if (m_PlayerController.HasKey(keyType))
                 {
                     interactionPrompt = unlockInteractionPrompt;
                 }
@@ -129,9 +131,9 @@ public class Door : Interactable, Lockable
 
     public bool Unlock()
     {
-        if (isLocked && m_PlayerController.HasKey())
+        if (isLocked && m_PlayerController.HasKey(keyType))
         {
-            m_PlayerController.UseKey();
+            m_PlayerController.UseKey(keyType);
             isLocked = false;
             navObstacle.enabled = isLocked;
             doorHandle.SetLock(isLocked);

@@ -80,8 +80,7 @@ public class PlayerCharacterController : MonoBehaviour
     [Tooltip("AI detection multiplier when talking a sprint step.")]
     public float sprintFootstepDetectionVolume = 4f;
 
-    [Tooltip("Number of keys")]
-    public int keys = 0;
+    private Dictionary<Key.KeyType, int> keys = new Dictionary<Key.KeyType, int>();
 
     public UnityAction<bool> onStanceChanged;
 
@@ -103,6 +102,12 @@ public class PlayerCharacterController : MonoBehaviour
 
     void Start()
     {
+        // Add key types to key dictionary
+        foreach (Key.KeyType key in Enum.GetValues(typeof(Key.KeyType)))
+        {
+            keys.Add(key, 0);
+        }
+
         // fetch components on the same gameObject
         m_Controller = GetComponent<CharacterController>();
         m_InputHandler = GetComponent<PlayerInputHandler>();
@@ -388,33 +393,40 @@ public class PlayerCharacterController : MonoBehaviour
         Application.Quit();
     }
 
-    internal void AddKey()
+    internal void AddKey(Key.KeyType keyType)
     {
-        
-        keys++;
-        if (keys > 0) {
+        keys[keyType] += 1;
+        if (keys[Key.KeyType.Normal] > 0) {
             keyCountText.text = keys.ToString();
             keyCountText.gameObject.SetActive(true);
         }
-    }
 
-    internal bool HasKey()
-    {
-        return keys > 0;
-    }
-
-    internal void UseKey()
-    {
-        if (keys > 0)
+        foreach(KeyValuePair<Key.KeyType, int> entry in keys)
         {
-            keys--;
-            keyCountText.text = keys.ToString();
-            }
-        if (keys == 0)
-        {
-            keyCountText.gameObject.SetActive(false);
+            Debug.Log(entry);
         }
     }
 
+    internal bool HasKey(Key.KeyType keyType)
+    {
+        return keys[keyType] > 0;
+    }
 
+    internal void UseKey(Key.KeyType keyType)
+    {
+        if (keys[keyType] > 0)
+        {
+            keys[keyType]--;
+            keyCountText.text = keys.ToString();
+        }
+        if (keys[Key.KeyType.Normal] == 0)
+        {
+            keyCountText.gameObject.SetActive(false);
+        }
+
+        foreach (KeyValuePair<Key.KeyType, int> entry in keys)
+        {
+            Debug.Log(entry);
+        }
+    }
 }
