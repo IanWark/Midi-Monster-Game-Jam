@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4713444388639484129}
   - component: {fileID: 6391268746444762981}
-  m_Layer: 0
-  m_Name: Monster Collision Sphere
+  m_Layer: 10
+  m_Name: Player Collision Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

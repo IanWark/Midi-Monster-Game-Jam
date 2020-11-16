@@ -21,6 +21,9 @@ public class PlayerCharacterController : MonoBehaviour
     public Animator winAnim = null;
     public TextMeshProUGUI winText = null;
     public Button winButton = null;
+    public int playerCollisionSphereLayer = 10;
+    public int monsterLayer = 8;
+    public int endGameZoneLayer = 15;
 
     [Header("General")]
     [Tooltip("Force applied downward when in the air")]
@@ -311,7 +314,8 @@ public class PlayerCharacterController : MonoBehaviour
     {
         interactText.gameObject.SetActive(false);
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactRange))
+        int ignorePlayerBitmask = ~(1 << playerCollisionSphereLayer);
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactRange, ignorePlayerBitmask))
         {
             Interactable subject = hit.collider.gameObject.GetComponent<Interactable>();
             if (subject != null && subject.IsInteractable())
@@ -329,11 +333,11 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8) // magic number :(
+        if (other.gameObject.layer == monsterLayer) 
         {
             StartCoroutine(Die());
         }
-        else if (other.gameObject.layer == 15)
+        else if (other.gameObject.layer == endGameZoneLayer)
         {
             StartCoroutine(Win());
         }
