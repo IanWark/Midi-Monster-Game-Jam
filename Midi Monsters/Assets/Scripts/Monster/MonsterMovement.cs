@@ -32,10 +32,13 @@ public class MonsterMovement : MonoBehaviour
 
     public void MoveToPosition(Vector3 position, float speed)
     {
-        navMeshAgent.speed = speed;
-        navMeshAgent.destination = position;
+        if (navMeshAgent.isActiveAndEnabled)
+        {
+            navMeshAgent.speed = speed;
+            navMeshAgent.destination = position;
 
-        debugCurrentDestination.position = position;
+            debugCurrentDestination.position = position;
+        }
     }
 
     public bool IsAtDestination()
