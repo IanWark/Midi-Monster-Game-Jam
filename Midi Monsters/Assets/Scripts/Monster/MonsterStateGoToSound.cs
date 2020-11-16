@@ -14,10 +14,10 @@ public class MonsterStateGoToSound : MonoBehaviour
         monsterMovement = GetComponent<MonsterMovement>();
     }
 
-    public void EnterState(Monster.DetectedSound detectedSound, Monster.eMonsterState monsterState)
+    public void EnterState(Monster.DetectedSound detectedSound, Monster.MonsterState monsterState)
     {
         float movementSpeed = monsterMovement.RunningSpeed;
-        if (monsterState == Monster.eMonsterState.SprintToSound)
+        if (monsterState == Monster.MonsterState.SprintToSound)
         {
             movementSpeed = monsterMovement.SprintingSpeed;
         }

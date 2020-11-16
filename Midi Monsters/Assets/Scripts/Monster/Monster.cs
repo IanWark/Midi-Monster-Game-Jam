@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public enum eMonsterState
+    public enum MonsterState
     {
         SprintToSound = 0,
         GoToSound = 1,
@@ -39,8 +39,8 @@ public class Monster : MonoBehaviour
     [SerializeField, Range(0, 1.5f), Tooltip("Threshold a sound must pass for the monster to move at full speed.")]
     public float sprintThreshold = 0.75f;
 
-    private eMonsterState currentState = eMonsterState.Wander;
-    public eMonsterState CurrentState { get { return currentState; } }
+    private MonsterState currentState = MonsterState.Wander;
+    public MonsterState CurrentState { get { return currentState; } }
     private DetectedSound lastDetectedSound = null;
     public float timeSinceLastSound { get; private set; }
 
@@ -64,7 +64,7 @@ public class Monster : MonoBehaviour
         monsterStateWander = GetComponent<MonsterStateWander>();
 
         monsterStateWander.EnterState();
-        currentState = eMonsterState.Wander;
+        currentState = MonsterState.Wander;
     }
 
     private void Update()
@@ -76,15 +76,15 @@ public class Monster : MonoBehaviour
 
         timeSinceLastSound += Time.deltaTime;
 
-        if (currentState == eMonsterState.GoToSound || currentState == eMonsterState.SprintToSound)
+        if (currentState == MonsterState.GoToSound || currentState == MonsterState.SprintToSound)
         {
             monsterStateGoToSound.Tick();
         }
-        else if (currentState == eMonsterState.Investigate)
+        else if (currentState == MonsterState.Investigate)
         {
             monsterStateInvestigatePoint.Tick();
         }
-        else if (currentState == eMonsterState.Wander)
+        else if (currentState == MonsterState.Wander)
         {
             monsterStateWander.Tick();
         }
@@ -92,14 +92,14 @@ public class Monster : MonoBehaviour
 
     private void ExitStateGoToSound()
     {
-        currentState = eMonsterState.Investigate;
+        currentState = MonsterState.Investigate;
         monsterStateInvestigatePoint.EnterState(lastDetectedSound);
     }
 
     private void ExitStateInvestigatePoint()
     {
         lastDetectedSound = null;
-        currentState = eMonsterState.Wander;
+        currentState = MonsterState.Wander;
         monsterStateWander.EnterState();
     }
 
@@ -115,7 +115,7 @@ public class Monster : MonoBehaviour
                 lastDetectedSound = detectedSound;
                 timeSinceLastSound = 0;
 
-                currentState = newSoundPriority > sprintThreshold ? eMonsterState.SprintToSound : eMonsterState.GoToSound;
+                currentState = newSoundPriority > sprintThreshold ? MonsterState.SprintToSound : MonsterState.GoToSound;
                 monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
             }
         }

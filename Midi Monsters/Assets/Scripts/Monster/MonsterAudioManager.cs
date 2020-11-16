@@ -92,16 +92,16 @@ public class MonsterAudioManager : MonoBehaviour
 
         switch (monster.CurrentState)
         {
-            case Monster.eMonsterState.Wander:
+            case Monster.MonsterState.Wander:
                 value = wanderValue;
                 break;
-            case Monster.eMonsterState.Investigate:
+            case Monster.MonsterState.Investigate:
                 value = investigateValue;
                 break;
-            case Monster.eMonsterState.GoToSound:
+            case Monster.MonsterState.GoToSound:
                 value = runValue;
                 break;
-            case Monster.eMonsterState.SprintToSound:
+            case Monster.MonsterState.SprintToSound:
                 value = sprintValue;
                 break;
             default:
@@ -111,7 +111,7 @@ public class MonsterAudioManager : MonoBehaviour
         }
 
         if (monster.timeSinceLastSound > oldSoundSeconds 
-            && (monster.CurrentState == Monster.eMonsterState.GoToSound || monster.CurrentState == Monster.eMonsterState.SprintToSound))
+            && (monster.CurrentState == Monster.MonsterState.GoToSound || monster.CurrentState == Monster.MonsterState.SprintToSound))
         {
             value *= oldSoundValueMultiplier;
         }
