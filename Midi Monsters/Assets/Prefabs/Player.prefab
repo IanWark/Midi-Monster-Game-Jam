@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 2254227859689205762}
   - component: {fileID: 2254227859689205764}
   - component: {fileID: 2254227859689205765}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 2254227859758985028}
   - component: {fileID: 2254227859758985030}
   - component: {fileID: 2254227859758985031}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Interaction Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 2470272465995357723}
   - component: {fileID: 2254227859900582611}
   - component: {fileID: 5609418782277975286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,6 +312,9 @@ MonoBehaviour:
   winAnim: {fileID: 5275558714022238470}
   winText: {fileID: 3441044948629440332}
   winButton: {fileID: 4250104978541708109}
+  playerCollisionSphereLayer: 10
+  monsterLayer: 8
+  endGameZoneLayer: 15
   gravityDownForce: 60
   deathDelay: 1
   winDelay: 1
@@ -505,7 +508,7 @@ GameObject:
   - component: {fileID: 2254227861062573397}
   - component: {fileID: 2254227861062573394}
   - component: {fileID: 2254227861062573395}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -589,7 +592,7 @@ GameObject:
   - component: {fileID: 2254227861312676897}
   - component: {fileID: 2254227861312676830}
   - component: {fileID: 2254227861312676831}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +695,7 @@ GameObject:
   - component: {fileID: 3787834086849022732}
   - component: {fileID: 315796253754399079}
   - component: {fileID: 4250104978541708109}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +814,7 @@ GameObject:
   - component: {fileID: 2783512672151177896}
   - component: {fileID: 1909031970379535835}
   - component: {fileID: 7106902970330541625}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Readable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +889,7 @@ GameObject:
   - component: {fileID: 6664557974322034563}
   - component: {fileID: 4739105278105402039}
   - component: {fileID: 634151429168370152}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1024,7 @@ GameObject:
   - component: {fileID: 7129460555073271805}
   - component: {fileID: 791225234878772056}
   - component: {fileID: 8651812130018598056}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ImageDeathFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1115,7 +1118,7 @@ GameObject:
   - component: {fileID: 8019588974313328316}
   - component: {fileID: 9015905669296035055}
   - component: {fileID: 3441044948629440332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1250,7 +1253,7 @@ GameObject:
   - component: {fileID: 2269008495637841382}
   - component: {fileID: 8262530374259993840}
   - component: {fileID: 5275558714022238470}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ImageWinFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,7 +1349,7 @@ GameObject:
   - component: {fileID: 1294318390316651171}
   - component: {fileID: 3031410670021207027}
   - component: {fileID: 6456412495712290863}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Interact Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
