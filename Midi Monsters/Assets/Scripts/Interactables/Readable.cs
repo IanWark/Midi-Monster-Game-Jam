@@ -51,15 +51,25 @@ public class Readable : Interactable
             {
                 m_isReading = false;
                 m_Image.enabled = false;
-                this.enabled = false; // stop update checks
-                Debug.Log("Stop read");
-                
+                this.enabled = false; // stop update checks                
             }
         }
     }
     public override bool IsInteractable() { return true;  }
 
     public override void Interact(PlayerCharacterController pc)
+    {
+        if (!m_isReading)
+        {
+            StartReading(pc);
+        }
+        else
+        {
+            StopReading();
+        }
+    }
+
+    public void StartReading(PlayerCharacterController pc)
     {
         m_PlayerController = pc;
         m_isReading = true;
@@ -69,7 +79,13 @@ public class Readable : Interactable
         m_Image.sprite = Sprite.Create((Texture2D)m_DisplayTexture, dimensions, pivot);
         m_Image.enabled = true;
         this.enabled = true;
-       Debug.Log("Read");
+    }
+
+    public void StopReading()
+    {
+        m_isReading = false;
+        m_Image.enabled = false;
+        this.enabled = false; // stop update checks 
     }
 
 }
