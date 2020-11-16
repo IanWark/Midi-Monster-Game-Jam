@@ -16,7 +16,9 @@ public class PlayerCharacterController : MonoBehaviour
     [Tooltip("You can't run and you can't hide...")]
     public Monster monster;
     [SerializeField]
-    private TextMeshProUGUI interactText = null;    
+    private TextMeshProUGUI interactText = null;
+    [SerializeField]
+    private TextMeshProUGUI keyCountText = null;
     public Animator deathAnim = null;
     public Animator winAnim = null;
     public TextMeshProUGUI winText = null;
@@ -97,6 +99,8 @@ public class PlayerCharacterController : MonoBehaviour
     float m_footstepDistanceCounter;
     float m_TargetCharacterHeight;
 
+    private Canvas canvas;
+
     void Start()
     {
         // fetch components on the same gameObject
@@ -113,6 +117,9 @@ public class PlayerCharacterController : MonoBehaviour
         // disable interaction prompt until we need it.
         interactText.text = "You aren't supposed to see this text!";
         interactText.gameObject.SetActive(false);
+
+        keyCountText.text = "0";
+        keyCountText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -383,7 +390,12 @@ public class PlayerCharacterController : MonoBehaviour
 
     internal void AddKey()
     {
+        
         keys++;
+        if (keys > 0) {
+            keyCountText.text = keys.ToString();
+            keyCountText.gameObject.SetActive(true);
+        }
     }
 
     internal bool HasKey()
@@ -393,7 +405,15 @@ public class PlayerCharacterController : MonoBehaviour
 
     internal void UseKey()
     {
-        keys--;
+        if (keys > 0)
+        {
+            keys--;
+            keyCountText.text = keys.ToString();
+            }
+        if (keys == 0)
+        {
+            keyCountText.gameObject.SetActive(false);
+        }
     }
 
 
