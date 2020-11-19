@@ -15,7 +15,7 @@ GameObject:
   m_Name: Wheel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4791291930835496
@@ -96,7 +96,7 @@ GameObject:
   m_Name: 'Wheel '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4217630612386496
@@ -177,7 +177,7 @@ GameObject:
   m_Name: Wheel 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4837382133442620
@@ -259,7 +259,7 @@ GameObject:
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4019151188825336
@@ -361,7 +361,7 @@ GameObject:
   m_Name: Wheel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4891832511348566
@@ -442,7 +442,7 @@ GameObject:
   m_Name: Wheel 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4147866574321854
@@ -523,7 +523,7 @@ GameObject:
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4362409455735098

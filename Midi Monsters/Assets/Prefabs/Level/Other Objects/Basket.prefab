@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4705754737913484}
   - component: {fileID: 33638532314273208}
   - component: {fileID: 23907931757017630}
+  - component: {fileID: 2048752460146713654}
   m_Layer: 0
   m_Name: Laundry Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4705754737913484
 Transform:
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2048752460146713654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255535382668078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8, y: 4.799999, z: 6.3999987}
+  m_Center: {x: -0.0000076293945, y: -0.000015258789, z: 3.1999993}
 --- !u!1 &1288099566233738
 GameObject:
   m_ObjectHideFlags: 0
