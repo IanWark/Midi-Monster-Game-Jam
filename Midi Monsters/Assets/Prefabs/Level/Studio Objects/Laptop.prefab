@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2d645c7883f9f4880167686f3dd4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPrompt: Set 5 sec alarm
+  interactionPrompt: Set 5 Sec Alarm
   delay: 5
   audible_distance: 200
 --- !u!65 &7524225182069740419

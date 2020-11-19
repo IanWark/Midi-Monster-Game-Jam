@@ -23,7 +23,7 @@ public class PlayerCharacterController : MonoBehaviour
     public Animator winAnim = null;
     public TextMeshProUGUI winText = null;
     public Button winButton = null;
-    public int playerCollisionSphereLayer = 10;
+    public LayerMask raycastLayerMask;
     public int monsterLayer = 8;
     public int endGameZoneLayer = 15;
 
@@ -326,8 +326,7 @@ public class PlayerCharacterController : MonoBehaviour
     {
         interactText.gameObject.SetActive(false);
 
-        int ignorePlayerBitmask = ~(1 << playerCollisionSphereLayer);
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactRange, ignorePlayerBitmask))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactRange, raycastLayerMask))
         {
             Interactable subject = hit.collider.gameObject.GetComponent<Interactable>();
             if (subject != null && subject.IsInteractable())

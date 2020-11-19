@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sound: 1
+  Sound: 7
   AutoPlay: 0
   Loop: 0
 --- !u!114 &1235375552
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2d645c7883f9f4880167686f3dd4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPrompt: Interact
+  interactionPrompt: Play
   delay: 0
   audible_distance: 200
 --- !u!1 &1420705555554570
