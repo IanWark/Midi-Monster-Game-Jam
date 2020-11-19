@@ -471,7 +471,6 @@ MonoBehaviour:
   crouchFootstepDetectionVolume: 1
   normalFootstepDetectionVolume: 2
   sprintFootstepDetectionVolume: 4
-  keys: 0
 --- !u!114 &2254227859900582610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +497,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.2
+  m_Height: 1.8
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -674,7 +673,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7921569, g: 0.8627451, b: 0.62352943, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
