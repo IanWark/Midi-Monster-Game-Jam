@@ -50,3 +50,8 @@ void SetChannelVolume(int channel, float volume)
 {
 	Audio::GameAudioManager::SetChannelVolume(channel, volume);
 }
+
+void SetMasterVolume(float volume)
+{
+	Audio::GameAudioManager::SetMasterVolume(volume);
+}
