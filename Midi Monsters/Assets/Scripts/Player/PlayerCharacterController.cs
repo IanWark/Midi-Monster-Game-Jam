@@ -390,6 +390,7 @@ public class PlayerCharacterController : MonoBehaviour
         winText.gameObject.SetActive(true);
         winButton.gameObject.SetActive(true);
         winButton.onClick.AddListener(Restart);
+        m_InputHandler.SetCursor(true);
         monster.EndGame();
         monster.enabled = false;
     }
