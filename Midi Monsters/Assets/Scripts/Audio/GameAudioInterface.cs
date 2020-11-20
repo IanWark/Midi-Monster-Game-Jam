@@ -21,6 +21,10 @@ public class GameAudioInterface : MonoBehaviour
         MonsterFootstep,
         PlayerFootstep,
         Piano2,
+        GuitarStrum,
+        BassMoney,
+        WUB,
+        Roar,
         COUNT
     }
 
@@ -55,6 +59,8 @@ public class GameAudioInterface : MonoBehaviour
         TH_Audio.SetChannelVolume(2, 0);
         TH_Audio.SetChannelVolume(3, 0);
         TH_Audio.SetChannelVolume(9, 0);
+
+        TH_Audio.SetMasterVolume(1);
     }
 
     public void UpdateMonsterState(MonsterAudioUpdate update)

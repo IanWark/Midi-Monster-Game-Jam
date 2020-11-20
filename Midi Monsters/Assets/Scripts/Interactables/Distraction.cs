@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Emitter))]
 public class Distraction : Interactable
 {
-    public override string GetInteractionPrompt() { return interactionPrompt; }
-
     [SerializeField, Tooltip("Amount of time before sound triggers.")]
     private float delay = 5;
     public float Delay { get { return delay; } }
@@ -19,6 +17,9 @@ public class Distraction : Interactable
     private GameObject monsterObj;
     private Monster monster;
     private Monster Monster { get { return monster; } }
+
+    bool active = false;
+    float timer = 0;
 
     //[SerializeField, Tooltip("Reference to Emitter script")]
     private Emitter emitter;
@@ -37,19 +38,24 @@ public class Distraction : Interactable
     public override void Interact(PlayerCharacterController pc)
     {
         monster = FindObjectOfType<Monster>();
-        StartCoroutine(TriggerDistraction());
-
+        timer = delay;
+        active = true;
     }
 
-    private IEnumerator TriggerDistraction()
+    private void Update()
     {
-
-        // wait for delay
-        if (delay > 0)
+        if (active)
         {
-            yield return new WaitForSeconds(delay);
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                TriggerDistraction();
+            }
         }
+    }
 
+    private void TriggerDistraction()
+    {
         emitter.PlaySound();
 
         if (monster != null)
@@ -57,14 +63,24 @@ public class Distraction : Interactable
             // check distance from self to monster
             float dist = Vector3.Distance(transform.position, Monster.transform.position);
             // notify monster if close enough to hear
-
             if (dist < audible_distance)
             {
-                monster.DetectSound(new Monster.DetectedSound(transform.position, transform.position, 1)); // predicted == current for now
+                monster.DetectDistractionSound(new Monster.DetectedSound(transform.position, transform.position, 1)); // predicted == current for now
             }
-
-            
         }
-        Debug.Log("Distraction has been interacted with.");
+
+        active = false;
+    }
+
+    public override string GetInteractionPrompt()
+    {
+        if (active)
+        {
+            return timer.ToString("0.0") + "s";
+        }
+        else
+        {
+            return interactionPrompt;
+        }
     }
 }

@@ -11,6 +11,8 @@ DllExport void PlayMidi(int id, bool loop);
 DllExport void SetMIDITempo(int id, double bpm);
 DllExport void SetMIDIVolume(int id, float volume);
 
+DllExport void SetMasterVolume(float volume);
+
 DllExport void SetChannelVoice(int channel, Audio::VoiceParameters params);
 DllExport void SetChannelVolume(int channel, float volume);
 

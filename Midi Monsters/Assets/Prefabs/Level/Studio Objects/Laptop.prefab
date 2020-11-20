@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b1c099fb207334aaa610f4406efece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sound: 2
+  Sound: 0
   AutoPlay: 0
   Loop: 0
 --- !u!114 &8344426155845032406

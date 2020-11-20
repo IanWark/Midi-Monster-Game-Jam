@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class TestEmitter : MonoBehaviour
@@ -12,5 +13,5 @@ public class TestEmitter : MonoBehaviour
         {
             emitter.PlaySound();
         }
-    }
+    } 
 }

@@ -62,6 +62,9 @@ public class TH_Audio : MonoBehaviour
     [DllImport("TH_Audio.dll")]
     private static extern void SetMIDIVolume(int id, float volume);
 
+    [DllImport("TH_Audio.dll")]
+    public static extern void SetMasterVolume(float volume);
+
     [SerializeField]
     private TH_Audio_VoiceData voiceData;
 

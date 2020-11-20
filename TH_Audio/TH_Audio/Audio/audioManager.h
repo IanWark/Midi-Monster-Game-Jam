@@ -67,6 +67,8 @@ namespace Audio
 
 		bool mMute;
 
+		float mMasterVolume;
+
 		std::vector<Voice*> mVoices;
 
 		std::list<PlayingSoundInstance> mPlayingSounds;
@@ -97,6 +99,7 @@ namespace Audio
 
 		void SetChannelVoiceInternal(int channel, VoiceParameters params);
 		void SetChannelVolumeInternal(int channel, float volume);
+		void SetMasterVolumeInternal(float volume);
 
 	public:
 		static void Init();
@@ -117,6 +120,8 @@ namespace Audio
 
 		static void SetChannelVoice(int channel, VoiceParameters params);
 		static void SetChannelVolume(int channel, float volume);
+
+		static void SetMasterVolume(float volume);
 
 		void Update();
 	};

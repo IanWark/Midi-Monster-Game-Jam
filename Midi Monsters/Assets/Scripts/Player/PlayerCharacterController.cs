@@ -19,6 +19,7 @@ public class PlayerCharacterController : MonoBehaviour
     private TextMeshProUGUI interactText = null;
     [SerializeField]
     private TextMeshProUGUI keyCountText = null;
+    public TextMeshProUGUI controls = null;
     public Animator deathAnim = null;
     public Animator winAnim = null;
     public TextMeshProUGUI winText = null;
@@ -138,6 +139,11 @@ public class PlayerCharacterController : MonoBehaviour
         HandleCameraMovement();
 
         CheckInteraction();
+
+        if (m_InputHandler.GetQuitPressed())
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()
@@ -367,7 +373,7 @@ public class PlayerCharacterController : MonoBehaviour
         yield return new WaitForSeconds(deathDelay);
 
         // Reload scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Restart();
     }
 
     public IEnumerator Win()
@@ -383,20 +389,22 @@ public class PlayerCharacterController : MonoBehaviour
         // Stop monster
         winText.gameObject.SetActive(true);
         winButton.gameObject.SetActive(true);
-        winButton.onClick.AddListener(Quit);
-        monster.gameObject.SetActive(false);
+        winButton.onClick.AddListener(Restart);
+        m_InputHandler.SetCursor(true);
+        monster.EndGame();
+        monster.enabled = false;
     }
 
-    public void Quit()
+    public void Restart()
     {
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     internal void AddKey(Key.KeyType keyType)
     {
         keys[keyType] += 1;
         if (keys[Key.KeyType.Normal] > 0) {
-            keyCountText.text = keys[Key.KeyType.Normal].ToString();
+            keyCountText.text = "Keys: " + keys[Key.KeyType.Normal].ToString();
             keyCountText.gameObject.SetActive(true);
         }
     }
@@ -411,7 +419,8 @@ public class PlayerCharacterController : MonoBehaviour
         if (keys[keyType] > 0)
         {
             keys[keyType]--;
-            keyCountText.text = keys.ToString();
+            keyCountText.text = "Keys: " + keys[Key.KeyType.Normal].ToString();
+            controls.enabled = false;
         }
         if (keys[Key.KeyType.Normal] == 0)
         {

@@ -20,6 +20,20 @@ public class PlayerInputHandler : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void SetCursor(bool visible)
+    {
+        if (visible)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        Cursor.visible = visible;
+    }
+
     public bool CanProcessInput()
     {
         return !m_PlayerCharacterController.isDead && Cursor.lockState == CursorLockMode.Locked;
@@ -126,5 +140,10 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         return 0f;
+    }
+
+    public bool GetQuitPressed()
+    {
+        return Input.GetButtonDown("Cancel");
     }
 }
