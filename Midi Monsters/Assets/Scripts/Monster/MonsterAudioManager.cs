@@ -26,6 +26,8 @@ public class MonsterAudioManager : MonoBehaviour
     private bool playerSeesMonsterUseProximity = true;
     [SerializeField, Tooltip("Just a straight multiplier on the playerSeesMonster value")]
     private float playerSeesMonsterMultiplier = 2f;
+    [SerializeField]
+    private float slowdownStepSize = 0.05f;
 
     [Header("References")]
     [SerializeField]
@@ -34,6 +36,9 @@ public class MonsterAudioManager : MonoBehaviour
     private GameAudioInterface audioInterface;
 
     private Monster monster;
+
+    private GameAudioInterface.MonsterAudioUpdate lastUpdate;
+    public bool slowDown = false;
 
     void Start()
     {
@@ -46,15 +51,25 @@ public class MonsterAudioManager : MonoBehaviour
         if (audioInterface != null)
         {
             GameAudioInterface.MonsterAudioUpdate monsterAudioUpdate = new GameAudioInterface.MonsterAudioUpdate();
-            monsterAudioUpdate.PlayerSeesMonster = GetPlayerSeesMonsterValue();
-            monsterAudioUpdate.MonsterSeesPlayer = GetMonsterSeesPlayerValue();
-            monsterAudioUpdate.Proximity = GetMonsterProximityValue();
-
+            if (!slowDown)
+            {
+                monsterAudioUpdate.PlayerSeesMonster = GetPlayerSeesMonsterValue();
+                monsterAudioUpdate.MonsterSeesPlayer = GetMonsterSeesPlayerValue();
+                monsterAudioUpdate.Proximity = GetMonsterProximityValue();
+            }
+            else
+            {
+                monsterAudioUpdate.PlayerSeesMonster = Mathf.Clamp(lastUpdate.PlayerSeesMonster - Time.deltaTime * slowdownStepSize, -1, 1);
+                monsterAudioUpdate.MonsterSeesPlayer = Mathf.Clamp(lastUpdate.MonsterSeesPlayer - Time.deltaTime * slowdownStepSize, -1, 1);
+                monsterAudioUpdate.Proximity = Mathf.Clamp(lastUpdate.Proximity - Time.deltaTime * slowdownStepSize, -1, 1);
+            }
+           
             if (debugPrint)
             {
                 Debug.Log("MonsterAudioUpdate: PlayerSeesMonster: " + monsterAudioUpdate.PlayerSeesMonster + " MonsterSeesPlayer: " + monsterAudioUpdate.MonsterSeesPlayer + " Proximity: " + monsterAudioUpdate.Proximity);
             }
 
+            lastUpdate = monsterAudioUpdate;
             audioInterface.UpdateMonsterState(monsterAudioUpdate);
         } 
     }

@@ -384,7 +384,8 @@ public class PlayerCharacterController : MonoBehaviour
         winText.gameObject.SetActive(true);
         winButton.gameObject.SetActive(true);
         winButton.onClick.AddListener(Quit);
-        monster.gameObject.SetActive(false);
+        monster.EndGame();
+        monster.enabled = false;
     }
 
     public void Quit()

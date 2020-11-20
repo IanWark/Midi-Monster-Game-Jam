@@ -49,11 +49,13 @@ public class Monster : MonoBehaviour
     MonsterStateWander monsterStateWander;
 
     MonsterMovement monsterMovement;
+    MonsterAudioManager monsterAudioManager;
 
     // Start is called before the first frame update
     private void Start()
     {
         monsterMovement = GetComponent<MonsterMovement>();
+        monsterAudioManager = GetComponent<MonsterAudioManager>();
 
         monsterStateGoToSound = GetComponent<MonsterStateGoToSound>(); 
         monsterStateGoToSound.OnExitState += ExitStateGoToSound;
@@ -119,6 +121,11 @@ public class Monster : MonoBehaviour
                 monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
             }
         }
+    }
+
+    public void EndGame()
+    {
+        monsterAudioManager.slowDown = true;
     }
 
     // Returns a random valid point on the navmesh within radius of position
