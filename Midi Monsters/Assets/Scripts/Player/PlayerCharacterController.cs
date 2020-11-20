@@ -399,11 +399,6 @@ public class PlayerCharacterController : MonoBehaviour
             keyCountText.text = keys.ToString();
             keyCountText.gameObject.SetActive(true);
         }
-
-        foreach(KeyValuePair<Key.KeyType, int> entry in keys)
-        {
-            Debug.Log(entry);
-        }
     }
 
     internal bool HasKey(Key.KeyType keyType)
@@ -421,11 +416,6 @@ public class PlayerCharacterController : MonoBehaviour
         if (keys[Key.KeyType.Normal] == 0)
         {
             keyCountText.gameObject.SetActive(false);
-        }
-
-        foreach (KeyValuePair<Key.KeyType, int> entry in keys)
-        {
-            Debug.Log(entry);
         }
     }
 }
