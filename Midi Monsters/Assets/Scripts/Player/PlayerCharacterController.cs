@@ -396,7 +396,7 @@ public class PlayerCharacterController : MonoBehaviour
     {
         keys[keyType] += 1;
         if (keys[Key.KeyType.Normal] > 0) {
-            keyCountText.text = keys.ToString();
+            keyCountText.text = keys[Key.KeyType.Normal].ToString();
             keyCountText.gameObject.SetActive(true);
         }
     }
