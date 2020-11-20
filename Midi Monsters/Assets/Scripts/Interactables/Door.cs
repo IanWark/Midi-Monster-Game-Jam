@@ -51,6 +51,7 @@ public class Door : Interactable, Lockable
 
         doorHandle.SetLock(isLocked);
         navObstacle.enabled = isLocked;
+        navObstacle.carving = isLocked;
         Open(m_Open);
     }
 
@@ -135,6 +136,7 @@ public class Door : Interactable, Lockable
         {
             m_PlayerController.UseKey(keyType);
             isLocked = false;
+            navObstacle.carving = isLocked;
             navObstacle.enabled = isLocked;
             doorHandle.SetLock(isLocked);
             monsterManager.LevelUpMonster();

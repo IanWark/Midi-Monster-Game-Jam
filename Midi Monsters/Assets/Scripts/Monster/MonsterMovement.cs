@@ -37,7 +37,10 @@ public class MonsterMovement : MonoBehaviour
             navMeshAgent.speed = speed;
             navMeshAgent.destination = position;
 
-            debugCurrentDestination.position = position;
+            if (debugCurrentDestination != null)
+            {
+                debugCurrentDestination.position = position;
+            }
         }
     }
 
