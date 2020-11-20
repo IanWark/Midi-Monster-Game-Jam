@@ -19,9 +19,12 @@ public class Key : Interactable
 
     private void Start()
     {
-        int randomIndex = Random.Range(0, possibleSpawnPoints.Count);
-        transform.position = possibleSpawnPoints[randomIndex].position;
-        transform.rotation = possibleSpawnPoints[randomIndex].rotation;
+        if (possibleSpawnPoints.Count > 0)
+        {
+            int randomIndex = Random.Range(0, possibleSpawnPoints.Count);
+            transform.position = possibleSpawnPoints[randomIndex].position;
+            transform.rotation = possibleSpawnPoints[randomIndex].rotation;
+        }
     }
 
     public override void Interact(PlayerCharacterController pc)
