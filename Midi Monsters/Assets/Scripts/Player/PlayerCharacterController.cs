@@ -404,7 +404,7 @@ public class PlayerCharacterController : MonoBehaviour
     {
         keys[keyType] += 1;
         if (keys[Key.KeyType.Normal] > 0) {
-            keyCountText.text = keys[Key.KeyType.Normal].ToString();
+            keyCountText.text = "Keys: " + keys[Key.KeyType.Normal].ToString();
             keyCountText.gameObject.SetActive(true);
         }
     }
@@ -419,7 +419,7 @@ public class PlayerCharacterController : MonoBehaviour
         if (keys[keyType] > 0)
         {
             keys[keyType]--;
-            keyCountText.text = keys[Key.KeyType.Normal].ToString();
+            keyCountText.text = "Keys: " + keys[Key.KeyType.Normal].ToString();
             controls.enabled = false;
         }
         if (keys[Key.KeyType.Normal] == 0)
