@@ -60,7 +60,7 @@ public class Distraction : Interactable
 
             if (dist < audible_distance)
             {
-                monster.DetectSound(new Monster.DetectedSound(transform.position, transform.position, 1)); // predicted == current for now
+                monster.DetectDistractionSound(new Monster.DetectedSound(transform.position, transform.position, 1)); // predicted == current for now
             }
 
             

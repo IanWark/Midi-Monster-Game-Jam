@@ -114,13 +114,28 @@ public class Monster : MonoBehaviour
             float newSoundPriority = detectedSound.GetPriority(transform.position);
             if (newSoundPriority > hearSoundThreshold)
             {
-                lastDetectedSound = detectedSound;
-                timeSinceLastSound = 0;
-
-                currentState = newSoundPriority > sprintThreshold ? MonsterState.SprintToSound : MonsterState.GoToSound;
-                monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
+                TransitionToStateGoToSound(detectedSound, newSoundPriority);
             }
         }
+    }
+
+    // Just always hear the sound if we get sent this
+    public void DetectDistractionSound(DetectedSound detectedSound)
+    {
+        if (monsterStateGoToSound != null)
+        {
+            float newSoundPriority = detectedSound.GetPriority(transform.position);
+            TransitionToStateGoToSound(detectedSound, newSoundPriority);
+        }
+    }
+
+    private void TransitionToStateGoToSound(DetectedSound detectedSound, float newSoundPriority)
+    {
+        lastDetectedSound = detectedSound;
+        timeSinceLastSound = 0;
+
+        currentState = newSoundPriority > sprintThreshold ? MonsterState.SprintToSound : MonsterState.GoToSound;
+        monsterStateGoToSound.EnterState(lastDetectedSound, currentState);
     }
 
     public void EndGame()
