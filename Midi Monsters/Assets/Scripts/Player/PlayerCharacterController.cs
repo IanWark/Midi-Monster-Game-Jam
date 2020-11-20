@@ -139,6 +139,11 @@ public class PlayerCharacterController : MonoBehaviour
         HandleCameraMovement();
 
         CheckInteraction();
+
+        if (m_InputHandler.GetQuitPressed())
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()
@@ -392,11 +397,6 @@ public class PlayerCharacterController : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
     }
 
     internal void AddKey(Key.KeyType keyType)

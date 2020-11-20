@@ -127,4 +127,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         return 0f;
     }
+
+    public bool GetQuitPressed()
+    {
+        return Input.GetButtonDown("Cancel");
+    }
 }
