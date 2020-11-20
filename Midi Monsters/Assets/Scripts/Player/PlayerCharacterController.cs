@@ -368,7 +368,7 @@ public class PlayerCharacterController : MonoBehaviour
         yield return new WaitForSeconds(deathDelay);
 
         // Reload scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Restart();
     }
 
     public IEnumerator Win()
@@ -384,9 +384,14 @@ public class PlayerCharacterController : MonoBehaviour
         // Stop monster
         winText.gameObject.SetActive(true);
         winButton.gameObject.SetActive(true);
-        winButton.onClick.AddListener(Quit);
+        winButton.onClick.AddListener(Restart);
         monster.EndGame();
         monster.enabled = false;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
