@@ -19,6 +19,7 @@ public class PlayerCharacterController : MonoBehaviour
     private TextMeshProUGUI interactText = null;
     [SerializeField]
     private TextMeshProUGUI keyCountText = null;
+    public TextMeshProUGUI controls = null;
     public Animator deathAnim = null;
     public Animator winAnim = null;
     public TextMeshProUGUI winText = null;
@@ -384,7 +385,8 @@ public class PlayerCharacterController : MonoBehaviour
         winText.gameObject.SetActive(true);
         winButton.gameObject.SetActive(true);
         winButton.onClick.AddListener(Quit);
-        monster.gameObject.SetActive(false);
+        monster.EndGame();
+        monster.enabled = false;
     }
 
     public void Quit()
@@ -411,7 +413,8 @@ public class PlayerCharacterController : MonoBehaviour
         if (keys[keyType] > 0)
         {
             keys[keyType]--;
-            keyCountText.text = keys.ToString();
+            keyCountText.text = keys[Key.KeyType.Normal].ToString();
+            controls.enabled = false;
         }
         if (keys[Key.KeyType.Normal] == 0)
         {
