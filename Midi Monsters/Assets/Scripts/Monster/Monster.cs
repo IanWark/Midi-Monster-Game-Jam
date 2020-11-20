@@ -125,7 +125,10 @@ public class Monster : MonoBehaviour
 
     public void EndGame()
     {
-        monsterAudioManager.slowDown = true;
+        if (monsterAudioManager)
+        {
+            monsterAudioManager.slowDown = true;
+        }
     }
 
     // Returns a random valid point on the navmesh within radius of position
