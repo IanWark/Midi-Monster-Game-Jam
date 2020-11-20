@@ -87,6 +87,7 @@ namespace Audio
 		, mSoundQueue()
 		, mPlayingMIDI()
 		, mMIDIQueue()
+		, mMasterVolume(0)
 	{
 		for (int i = 0; i < VOICE_COUNT; i++)
 		{
@@ -278,6 +279,16 @@ namespace Audio
 		instance->SetChannelVolumeInternal(channel, volume);
 	}
 
+	void GameAudioManager::SetMasterVolumeInternal(float volume)
+	{
+		mMasterVolume = volume;
+	}
+
+	/*static*/ void GameAudioManager::SetMasterVolume(float volume)
+	{
+		instance->SetMasterVolumeInternal(volume);
+	}
+
 	long long SoundID = 0;
 
 	void GameAudioManager::Update()
@@ -394,7 +405,7 @@ namespace Audio
 					}					
 				}
 
-				sample = (float)fullSample;
+				sample = (float)fullSample * mMasterVolume;
 				memcpy(output, &sample, sizeof(float));
 				output += sizeof(float);
 			}
