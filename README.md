@@ -1,5 +1,5 @@
 # Midi-Monster-Game-Jam
-https://wark.itch.io/midi-monster
+itch.io page: https://wark.itch.io/midi-monster
 
 Made in Unity for the Snowed In Game Jam 2020.
 
